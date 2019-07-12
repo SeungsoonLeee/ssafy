@@ -1,0 +1,26 @@
+
+유저 수정 : $ git config [user.email | user.name] "내용"
+커밋 수정 : $ git commit --amend
+수정된 파일 되돌리기 : $ git checkout -- 파일
+깃 되돌리기 : $ git reset --hard HEAD^
+원격 저장소 삭제 : $ git remote rm git_test
+로컬 저장소 갱신(병합까지 진행) : $ git pull
+로컬 저장소 갱신(병합은 하지 않음) : $ git fetch
+갱신 후 변경된 파일 조회 : $ git log origin/master
+변경된 파일 확인 후 병합 : $ git merge origin/master 
+
+branch 생성 : $ git branch 브랜치명
+branch 삭제 : $ git branch -d 브랜치명
+branch 확인 : $ git branch 
+branch 전환 : $ git checkout 브랜치명
+
+git merge :
+$ git checkout master
+$ git merge like_feature
+
+git merge 충돌 해결
+git status 명령어로 어느 파일에서 충돌이 발생했는지 확인합니다.
+충돌이 일어난 파일 열기
+잘못된 부분 삭제해주기
+add commit
+merge된 branch 확인 : $ git branch --merged
