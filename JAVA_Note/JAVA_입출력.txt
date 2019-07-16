@@ -5,3 +5,21 @@
 <Output Stream>
 	1. OutputStream
 	2. Writer
+
+
+[입력]
+1. Scanner
+개행문자 전까지 자료를 읽어드림
+ - Scanner.next()
+ - Scanner.nextInt()
+
+개행문자까지 자료를 읽어드림
+ - Scanner.nextLine()
+	
+2. Buffer
+
+
+* node Stream
+* filter Stream
+*Token
+- String Tokenizer
