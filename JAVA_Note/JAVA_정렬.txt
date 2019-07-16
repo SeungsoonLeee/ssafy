@@ -1,0 +1,9 @@
+[Arrays]
+배열을 정렬해줌.
+ex) Arrays.sort(배열)
+
+
+* Comparable : reference type array에서 각 원소별로 정렬 가능하게 함.
+	student의 이름, 나이, 학번 순 등으로 정렬
+
+* Comparator : 비교자(도우미 역할)

@@ -1,0 +1,7 @@
+[Stream]
+<Input Stream>
+	1. InputStream : byte 단위
+	2. Reader : Character(2byte) 단위
+<Output Stream>
+	1. OutputStream
+	2. Writer

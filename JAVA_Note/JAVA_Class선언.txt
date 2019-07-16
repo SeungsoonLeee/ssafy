@@ -1,0 +1,25 @@
+[Class를 선언하는 방법]
+1. 같은 java파일 안에 class를 따로 선언
+A.java와 이름이 같은 클래스만 public을 붙일 수 있다.
+	<A.java>
+	public class A {
+		
+	}
+	class B{
+		
+	}
+
+2. 같은 java파일 안에 class안에 class를 선언
+멤버처럼 사용하기 때문에 멤버간 접근이 가능하며, private를 붙여 은닉도 가능하다.
+	<A.java>
+	public class A{
+		[private] class B{
+
+		}
+	}
+
+3.각 java파일에 각 class를 선언
+	<A.java>
+	public class A
+	<B.java>
+	public class B
