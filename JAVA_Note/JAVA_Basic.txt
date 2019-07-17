@@ -1,5 +1,5 @@
 [자바의 자료형]
-<Premitive Type> : 실제 저장한 값들이 들어있는 자료형
+<Primitive Type> : 실제 저장한 값들이 들어있는 자료형
 	1. 숫자형
 		a)정수형 - byte, short, int(default), long
 		b)실수형 - float, double(default)
@@ -8,7 +8,7 @@
 	3. 논리형
 		-boolean
 
-<Reference Type(Non-Premitive)> : 값이 저장된 레퍼런스(주소)가 들어있는 자료형
+<Reference Type(Non-Primitive)> : 값이 저장된 레퍼런스(주소)가 들어있는 자료형
 	premitive type이 아닌 모든 자료형 - 배열(문자열) 등등..
 
 
@@ -84,7 +84,7 @@
 같은 자료형들을 연속된 공간에 저장하여 집합단위로 일괄처리하기 위해 사용
 	ex) 데이터타입[] 배열명 = new 데이터타입[크기];
 	int[] int = new int[3];
-<Premitive type array>
+<Primitive type array>
 <Reference type array>
 
 
