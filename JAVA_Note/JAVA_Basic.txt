@@ -1,49 +1,49 @@
-[ÀÚ¹ÙÀÇ ÀÚ·áÇü]
-<Primitive Type> : ½ÇÁ¦ ÀúÀåÇÑ °ªµéÀÌ µé¾îÀÖ´Â ÀÚ·áÇü
-	1. ¼ýÀÚÇü
-		a)Á¤¼öÇü - byte, short, int(default), long
-		b)½Ç¼öÇü - float, double(default)
-	2. ¹®ÀÚÇü
+ï»¿[ìžë°”ì˜ ìžë£Œí˜•]
+<Primitive Type> : ì‹¤ì œ ì €ìž¥í•œ ê°’ë“¤ì´ ë“¤ì–´ìžˆëŠ” ìžë£Œí˜•
+	1. ìˆ«ìží˜•
+		a)ì •ìˆ˜í˜• - byte, short, int(default), long
+		b)ì‹¤ìˆ˜í˜• - float, double(default)
+	2. ë¬¸ìží˜•
 		- char
-	3. ³í¸®Çü
+	3. ë…¼ë¦¬í˜•
 		-boolean
 
-<Reference Type(Non-Primitive)> : °ªÀÌ ÀúÀåµÈ ·¹ÆÛ·±½º(ÁÖ¼Ò)°¡ µé¾îÀÖ´Â ÀÚ·áÇü
-	premitive typeÀÌ ¾Æ´Ñ ¸ðµç ÀÚ·áÇü - ¹è¿­(¹®ÀÚ¿­) µîµî..
+<Reference Type(Non-Primitive)> : ê°’ì´ ì €ìž¥ëœ ë ˆí¼ëŸ°ìŠ¤(ì£¼ì†Œ)ê°€ ë“¤ì–´ìžˆëŠ” ìžë£Œí˜•
+	premitive typeì´ ì•„ë‹Œ ëª¨ë“  ìžë£Œí˜• - ë°°ì—´(ë¬¸ìžì—´) ë“±ë“±..
 
 
 
-[Çüº¯È¯]
-ÀÚ·áÇüÀ» ¹Ù²Ù´Â ÇàÀ§, °´Ã¼°£(reference type) Çüº¯È¯ÀÇ °æ¿ì¿¡´Â »ó¼Ó°ü°è¸¦ °¡Áö°í Çüº¯È¯À» ÇÑ´Ù.
-ÀÚ¹ÙÀÇ booleanÀº Çüº¯È¯ÀÌ ºÒ°¡ÇÏ´Ù. »ó¼ö·Î True¿Í False¸¸ »ç¿ë
-<¹¬½ÃÀû Çüº¯È¯> : up-casting
-	Æ¯º°È÷ ¸í½ÃÇÏÁö ¾Ê¾Æµµ ÀÚµ¿À¸·Î ¼öÇà(ÀÛÀº ÀÚ·áÇüÀÌ Å« ÀÚ·áÇü¿¡ ¸ÂÃçÁü)
+[í˜•ë³€í™˜]
+ìžë£Œí˜•ì„ ë°”ê¾¸ëŠ” í–‰ìœ„, ê°ì²´ê°„(reference type) í˜•ë³€í™˜ì˜ ê²½ìš°ì—ëŠ” ìƒì†ê´€ê³„ë¥¼ ê°€ì§€ê³  í˜•ë³€í™˜ì„ í•œë‹¤.
+ìžë°”ì˜ booleanì€ í˜•ë³€í™˜ì´ ë¶ˆê°€í•˜ë‹¤. ìƒìˆ˜ë¡œ Trueì™€ Falseë§Œ ì‚¬ìš©
+<ë¬µì‹œì  í˜•ë³€í™˜> : up-casting
+	íŠ¹ë³„ížˆ ëª…ì‹œí•˜ì§€ ì•Šì•„ë„ ìžë™ìœ¼ë¡œ ìˆ˜í–‰(ìž‘ì€ ìžë£Œí˜•ì´ í° ìžë£Œí˜•ì— ë§žì¶°ì§)
 	ex) int + float -> float + float
 
-<¸í½ÃÀû Çüº¯È¯> : down-casting
-	Á÷Á¢ Çüº¯È¯À» ¸í½ÃÇÏ¿© º¯°æÇÔ(ÁÖ·Î Å« ÀÚ·áÇü¿¡¼­ ÀÛÀº ÀÚ·áÇüÀ¸·Î)
+<ëª…ì‹œì  í˜•ë³€í™˜> : down-casting
+	ì§ì ‘ í˜•ë³€í™˜ì„ ëª…ì‹œí•˜ì—¬ ë³€ê²½í•¨(ì£¼ë¡œ í° ìžë£Œí˜•ì—ì„œ ìž‘ì€ ìžë£Œí˜•ìœ¼ë¡œ)
 	ex) int + (int)float -> int + int
 
 
 
-[Á¶°Ç¹®]
-<if - else if - else¹®>
-	true, false¿¡ µû¶ó ÄÚµå ½ÇÇà¿©ºÎ °áÁ¤
-	if(Á¶°Ç½Ä){
+[ì¡°ê±´ë¬¸]
+<if - else if - elseë¬¸>
+	true, falseì— ë”°ë¼ ì½”ë“œ ì‹¤í–‰ì—¬ë¶€ ê²°ì •
+	if(ì¡°ê±´ì‹){
 
-	}else if(Á¶°Ç½Ä){
+	}else if(ì¡°ê±´ì‹){
 
 	}else{
 
 	}
 
-<switch - case ¹®>
-	°ªµé µ¿µîºñ±³ / ´ÙÁß ºÐ±â
-	switch(ºñ±³´ë»ó){
-	case (ºñ±³°ª):
+<switch - case ë¬¸>
+	ê°’ë“¤ ë™ë“±ë¹„êµ / ë‹¤ì¤‘ ë¶„ê¸°
+	switch(ë¹„êµëŒ€ìƒ){
+	case (ë¹„êµê°’):
 
 		break;
-	case (ºñ±³°ª):
+	case (ë¹„êµê°’):
 
 		break;
 	default:
@@ -51,45 +51,45 @@
 
 
 
-[¹Ýº¹¹®]
-<for¹®>
-	for(ÃÊ±âÄ¡; Á¶°Ç½Ä; Áõ°¡Ä¡){
+[ë°˜ë³µë¬¸]
+<forë¬¸>
+	for(ì´ˆê¸°ì¹˜; ì¡°ê±´ì‹; ì¦ê°€ì¹˜){
 
 	}
 
-<foreach¹®>
-	for(µ¥ÀÌÅÍÅ¸ÀÔ º¯¼ö¸í: ÀÌÅÍ·¯ºíÅ¸ÀÔ){
+<foreachë¬¸>
+	for(ë°ì´í„°íƒ€ìž… ë³€ìˆ˜ëª…: ì´í„°ëŸ¬ë¸”íƒ€ìž…){
 
 	}
 
-<while¹®>
-	while(Á¶°Ç½Ä){
+<whileë¬¸>
+	while(ì¡°ê±´ì‹){
 
 	}
 
-<do-while¹®>
+<do-whileë¬¸>
 	do{
 
-	}while(Á¶°Ç½Ä)
+	}while(ì¡°ê±´ì‹)
 	
 
 
-[Á¦¾î¹®]
-	continue : ´ÙÀ½ ¹Ýº¹À¸·Î °Ç³Ê ¶Ü
-	break : ¹Ýº¹ Áß´Ü
+[ì œì–´ë¬¸]
+	continue : ë‹¤ìŒ ë°˜ë³µìœ¼ë¡œ ê±´ë„ˆ ëœ€
+	break : ë°˜ë³µ ì¤‘ë‹¨
 
 
 
-[¹è¿­(Array) : °´Ã¼type] = µ¿ÇüÁýÇÕ
-°°Àº ÀÚ·áÇüµéÀ» ¿¬¼ÓµÈ °ø°£¿¡ ÀúÀåÇÏ¿© ÁýÇÕ´ÜÀ§·Î ÀÏ°ýÃ³¸®ÇÏ±â À§ÇØ »ç¿ë
-	ex) µ¥ÀÌÅÍÅ¸ÀÔ[] ¹è¿­¸í = new µ¥ÀÌÅÍÅ¸ÀÔ[Å©±â];
+[ë°°ì—´(Array) : ê°ì²´type] = ë™í˜•ì§‘í•©
+ê°™ì€ ìžë£Œí˜•ë“¤ì„ ì—°ì†ëœ ê³µê°„ì— ì €ìž¥í•˜ì—¬ ì§‘í•©ë‹¨ìœ„ë¡œ ì¼ê´„ì²˜ë¦¬í•˜ê¸° ìœ„í•´ ì‚¬ìš©
+	ex) ë°ì´í„°íƒ€ìž…[] ë°°ì—´ëª… = new ë°ì´í„°íƒ€ìž…[í¬ê¸°];
 	int[] int = new int[3];
 <Primitive type array>
 <Reference type array>
 
 
 
-[±âÅ¸]
-ÀÚ¹Ù´Â °´Ã¼ »ý¼ºÀÌ ¹«Á¶°Ç heap¿¡ ¿Ã¶ó°¨. »ý¼±µÈ À§Ä¡´Â Áß¿äÇÏÁö ¾ÊÀ½.
--> °´Ã¼ »ý¼º½Ã ÀÚµ¿À¸·Î default°ªÀ¸·Î ÃÊ±âÈ­ µÈ´Ù.
-¾îµå·¹½º¿Í ·¹ÆÛ·±½º´Â ´Ù¸¥ °³³ä!
+[ê¸°íƒ€]
+ìžë°”ëŠ” ê°ì²´ ìƒì„±ì´ ë¬´ì¡°ê±´ heapì— ì˜¬ë¼ê°. ìƒì„ ëœ ìœ„ì¹˜ëŠ” ì¤‘ìš”í•˜ì§€ ì•ŠìŒ.
+-> ê°ì²´ ìƒì„±ì‹œ ìžë™ìœ¼ë¡œ defaultê°’ìœ¼ë¡œ ì´ˆê¸°í™” ëœë‹¤.
+ì–´ë“œë ˆìŠ¤ì™€ ë ˆí¼ëŸ°ìŠ¤ëŠ” ë‹¤ë¥¸ ê°œë…!

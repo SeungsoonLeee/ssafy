@@ -1,23 +1,23 @@
-[Stream]
+ï»¿[Stream]
 <Input Stream>
-	1. InputStream : byte ´ÜÀ§
-	2. Reader : Character(2byte) ´ÜÀ§
+	1. InputStream : byte ë‹¨ìœ„
+	2. Reader : Character(2byte) ë‹¨ìœ„
 <Output Stream>
 	1. OutputStream
 	2. Writer
 
 
-[ÀÔ·Â]
+[ì…ë ¥]
 1. Scanner
-°³Çà¹®ÀÚ Àü±îÁö ÀÚ·á¸¦ ÀĞ¾îµéÀÓ
+ê°œí–‰ë¬¸ì ì „ê¹Œì§€ ìë£Œë¥¼ ì½ì–´ë“¤ì„
  - Scanner.next()
  - Scanner.nextInt()
 
-°³Çà¹®ÀÚ±îÁö ÀÚ·á¸¦ ÀĞ¾îµéÀÓ
+ê°œí–‰ë¬¸ìê¹Œì§€ ìë£Œë¥¼ ì½ì–´ë“¤ì„
  - Scanner.nextLine()
 	
 2. Buffer
-Byte·Î ÀÔ·ÂÀ» ÀĞ¾îµéÀÓ
+Byteë¡œ ì…ë ¥ì„ ì½ì–´ë“¤ì„
  BufferedReader br = new BufferedReader(new InputStreamReader());
  - br.read()
  - br.readLine()
