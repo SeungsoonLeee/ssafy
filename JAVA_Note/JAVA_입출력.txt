@@ -9,15 +9,17 @@
 
 [입력]
 1. Scanner
-개행문자 전까지 자료를 읽어드림
+개행문자 전까지 자료를 읽어들임
  - Scanner.next()
  - Scanner.nextInt()
 
-개행문자까지 자료를 읽어드림
+개행문자까지 자료를 읽어들임
  - Scanner.nextLine()
 	
 2. Buffer
-
+Byte로 입력을 읽어들임
+ - br.read()
+ - br.readLine()
 
 * node Stream
 * filter Stream
