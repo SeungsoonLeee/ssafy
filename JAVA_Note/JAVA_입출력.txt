@@ -18,6 +18,7 @@
 	
 2. Buffer
 Byte로 입력을 읽어들임
+ BufferedReader br = new BufferedReader(new InputStreamReader());
  - br.read()
  - br.readLine()
 
