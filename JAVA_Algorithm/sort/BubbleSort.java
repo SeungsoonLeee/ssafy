@@ -26,13 +26,16 @@ public class BubbleSort {
 		}
 		
 		for (int count = bubble.length - 1; count > 0; count--) {
+			boolean isSwap = false;
 			for (int i = 0; i < count; i++) {
 				if (bubble[i] > bubble[i + 1]) {
 					int temp = bubble[i];
 					bubble[i] = bubble[i + 1];
 					bubble[i + 1] = temp;
+					isSwap = true;
 				}
 			}
+			if(!isSwap) break; // 한번도 스왑이 이루어지지 않았다면 정렬이 완료된 것이므로 break
 		}
 		
 		System.out.println(Arrays.toString(bubble));
