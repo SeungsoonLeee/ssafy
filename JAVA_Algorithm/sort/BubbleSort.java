@@ -25,7 +25,7 @@ public class BubbleSort {
 			bubble[i] = sc.nextInt();
 		}
 		
-		for (int count = bubble.length - 1; count >= 0; count--) {
+		for (int count = bubble.length - 1; count > 0; count--) {
 			for (int i = 0; i < count; i++) {
 				if (bubble[i] > bubble[i + 1]) {
 					int temp = bubble[i];
