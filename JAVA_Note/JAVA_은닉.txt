@@ -1,0 +1,12 @@
+﻿[Encapsulation]
+ - 은닉 : decouple -> 수정성 향상
+ - 데이터 보호
+ - 접근을 위한 getter, setter
+  getter ex)
+  public String getName(){
+   return this.name;
+  }
+  setter ex)
+  public void setName(String name){
+   this.name = name;
+  }
