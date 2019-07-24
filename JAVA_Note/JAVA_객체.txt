@@ -1,0 +1,38 @@
+﻿[객체(Object)]
+ - 객체 지향 program의 구성 단위
+ - 재사용, 유지보수 단위
+ - 속성(data)과 행위(method)로 구성됨
+ - 객체 생성을 위해 클래스를 정의하여 사용
+
+ 
+[클래스(class)]
+ - 정의
+ 	[modifiers] class 클래스명{
+ 		//속성
+ 		 [modifiers] 데이터타입 속성명;
+ 		//생성자
+ 		 [access modifiers] 클래스명(매개변수) { };
+ 		//메서드
+ 		 [modifiers] 리턴타입 메서드명(매개변수) { };
+ 	}
+ - 선언
+ 	클래스명 변수명;
+ - 생성
+ 	변수명 = new 생성자([값]);
+ - 속성 접근
+	변수명.속성;
+ - 메서드 접근
+ 	변수명.메서드();
+ 	
+ 	
+[modifiers]
+1. access modifier
+ - public
+ - protected
+ - private
+ - 생략
+ 
+2. usage modifier
+ - static : 일반 클래스에는 사용하지 못하고 nested 클래스에는 사용 가능
+ - final
+ - abstract
