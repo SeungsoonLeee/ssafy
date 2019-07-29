@@ -6,7 +6,7 @@ public class PermutationTest3 {
 	static Stack<Integer> s = new Stack<Integer>();
 
 	public static void main(String[] args) {
-		// 1, 2, 3 세 수 중 3자리 순열 구하기 by 재귀 with Stack
+		// 1, 2, 3, 4 네 수 중 2자리 순열 구하기 by 재귀 with Stack
 		int[] num = { 1, 2, 3, 4 };
 		boolean[] selected = new boolean[num.length];
 		permutation(num, selected, 2);
