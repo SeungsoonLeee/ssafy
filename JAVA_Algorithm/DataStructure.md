@@ -6,7 +6,6 @@ ex) 배열 . . .
 1. Stack
 
 >먼저 입력된 자료가 나중에 출력되는 FILO(=LIFO) 방식의 자료 구조.
-
 >- stack 기본 메서드 : push, pop, peek, [isEmpty, size 등...]
 
 ```java
@@ -84,7 +83,6 @@ public class Stack {
 2. Queue
 
 >먼저 입력된 자료가 먼저 출력되는 FIFO(=LILO) 방식의 자료 구조.
-
 >- Qeue 기본 메서드 : 
 
 ```java
