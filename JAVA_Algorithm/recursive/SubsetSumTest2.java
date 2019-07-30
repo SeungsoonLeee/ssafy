@@ -5,10 +5,10 @@ import java.util.Scanner;
 public class SubsetSumTest2 {
 	static int[] nums = { 5, 6, 10, 11, 16 };
 	static int cnt = 0;
-	
+	static int targetSum;
 	public static void main(String[] args) {
 		Scanner sc = new Scanner(System.in);
-		int targetSum = sc.nextInt();
+		targetSum = sc.nextInt();
 //		for (int i = 0; i < N; i++) {
 //			nums[i] = sc.nextInt();
 //		}
@@ -24,7 +24,7 @@ public class SubsetSumTest2 {
 	// 가장 끝에서 합을 비교한 기존의 방법과는 달리 그때그때 부분집합의 합을 구할 수 있다.
 	public static void subsetSum(int index, int sum) {
 		if (index >= nums.length) {
-			if (sum == 21)
+			if (sum == targetSum)
 				cnt++;
 			return;
 		} else {
