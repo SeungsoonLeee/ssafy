@@ -95,3 +95,23 @@ public class Stack {
 1:N, N:N 구조의 자료 형태
 
 ex) 트리, 그래프 . . .
+
+1. Tree
+
+>.
+>- Tree
+
+```java
+// 자료구조 Tree를 직접 구현해보자.
+
+```
+
+2. Graph
+
+>.
+>- Graph
+
+```java
+// 자료구조 Graph을 직접 구현해보자.
+
+```
