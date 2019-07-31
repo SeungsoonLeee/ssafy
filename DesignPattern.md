@@ -1,4 +1,5 @@
-###Singleton Pattern
+###1. Singleton Pattern
+
 객체를 항상 하나만 유지하는 디자인 패턴.
 
 client와 server사이에 netClient라는 객체로 client를 관리한다고 하자.
