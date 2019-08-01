@@ -2,7 +2,8 @@
 
 ### NodeStream(IO 하는 실제 대상)
 
-| 왼쪽 정렬 | 가운데 정렬 | 오른쪽 정렬 | 오른쪽 정렬 |
-| :---: | :---: | :---: | :---: |
-| 내용 11 | 내용 12 | 내용 13 | 내용 13 |
-| 내용 21 | 내용 22 | 내용 23 | 내용 13 |
+| Type | Byte(모든 데이터) | Char(문자 전용) |
+| :---: | :---: | :---: |
+| 추상 | InputStream, OutputStream | Reader, Writer |
+| file | FileInputStream, FileOutputStream | FileReader, FileWriter |
+| moemory | ByteArrayInputStream, ByteArrayOutputStream | CharArrayReader, CharArrayWriter |
