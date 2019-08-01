@@ -7,9 +7,9 @@ java에서 오류는 객체이고 크게 2가지로 분류된다.
 
  - ArrayIndexOutOfBoundException : 배열의 접근 범위를 벗어난 경우
  - NegativeArraySizeException : 배열의 size를 음수로 생성한 경우
- - 
+ - . . .
 
- 2)
+ 2) Exception
  - FileNotFoundException : 지정한 경로에 파일이 없는 경우
 
 2. Error : 치명적인 오류 발생, system적 오류
