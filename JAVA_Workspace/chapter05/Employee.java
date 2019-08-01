@@ -49,4 +49,5 @@ public class Employee {
 	protected void service() {
 		System.out.println("Employ의 서비스");
 	}
+
 }
