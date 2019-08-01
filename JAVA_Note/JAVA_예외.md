@@ -1,4 +1,4 @@
-##Exception(예외)
+## Exception(예외)
 java에서 오류는 객체이고 크게 2가지로 분류된다.
 
 1. Exception : 프로그램 실행 도중 기대되지 않는 상황 발생, sw적 오류

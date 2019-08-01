@@ -1,4 +1,4 @@
-##Java API
+## Java API
 class 단위로 미리 구현되어 제공되는 프로그램으로 class 단위의 library이다.
 
 1. 표준 API package 구조

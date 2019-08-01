@@ -1,4 +1,4 @@
-##Collection
+## Collection
 
 ### List
 
@@ -9,13 +9,13 @@
 
 2. LinkedList
 
-###Set
+### Set
 
 >중복 저장 X
 >순서가 없음
 
 
-###Map
+### Map
 
 >key와 value로 구성된 자료구조
 >key값으로  value에 접근한다.

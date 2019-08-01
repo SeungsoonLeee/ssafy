@@ -1,4 +1,4 @@
-##상속(Inheritance)
+## 상속(Inheritance)
 class 설계 시 특정 class를 상속받아 그 class의 data와 method를 사용할 수 있다.<br>
 - 모든 속성과 모든 메서드를 상속받음
 - 단일 상속만 지원

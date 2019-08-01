@@ -1,7 +1,7 @@
-##UML(Unified Modeling Language)
+## UML(Unified Modeling Language)
 객체지향 모델링 언어로 프로그램 설계를 표현하기 위해 사용하는 그림 표기법.
 
-#####1. 종류
+#### 1. 종류
 - 클래스 다이어그램 (Class Diagram) : 클래스 명세와 클래스 간의 관계를 표현
 - 복합 구조 다이어그램 (Composite Structure Diagram) : 전체-부분 구조를 가진 클래스를 실행할 때의 구조를 표현
 - 컴포넌트 다이어그램 (Component Diagram) : 파일과 데이터베이스, 프로게스와 스레드 등의 소프트웨어 구조를 표현
