@@ -13,13 +13,19 @@
 
 **2.1. API : Collections.sort**
 
-- CompareTo(T other)
+- Comparable의 **CompareTo(T other)**
 
 >자신의 값과 other 값의 뺄셈 결과가  
 >① 음수 : 바꾸지 않음 -> 오름차순  
 >② 0 : 바꾸지 않음 -> 오름차순  
 >③ 양수 : 바꿈 -> 내림차순  
 
+- Comparator의 **Compare(a, b)**
+
+>a와 b 값의 뺄셈 결과가  
+>① 음수 : 바꾸지 않음 -> 오름차순  
+>② 0 : 바꾸지 않음 -> 오름차순  
+>③ 양수 : 바꿈 -> 내림차순  
 
 
 
