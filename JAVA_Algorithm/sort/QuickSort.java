@@ -21,22 +21,12 @@ public class QuickSort {
 					left++;
 				while (arr[pivot] <= arr[right] && left < right)
 					right--;
-				if (left < right) {
-					int temp = arr[left];
-					arr[left] = arr[right];
-					arr[right] = temp;
-				}
+				int temp = arr[left];
+				arr[left] = arr[right];
+				arr[right] = temp;
 			}
-			int temp = arr[pivot];
-			arr[pivot] = arr[right];
-			arr[right] = temp;
-			pivot = right;
-			qSort(arr, start, pivot - 1);
-			qSort(arr, pivot + 1, end);
+			qSort(arr, start, right - 1);
+			qSort(arr, right + 1, end);
 		}
 	}
 }
-
-// 0 1 2 3 4 5 6 7 8
-// 9 4 6 1 2 7 9 7 5
-// p s             e
