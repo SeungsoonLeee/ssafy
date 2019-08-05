@@ -83,10 +83,62 @@ public class Stack {
 2. Queue
 
 >먼저 입력된 자료가 먼저 출력되는 FIFO(=LILO) 방식의 자료 구조.
->- Qeue 기본 메서드 : 
+>- 종류 : 선형큐, 원형큐
+>- Queue 기본 메서드 : enqueue, dequeue, front, rear, [isEmpty, size 등...]
 
 ```java
-// 자료구조 Queue을 직접 구현해보자.
+// 자료구조 Queue를 직접 구현해보자.
+// 1. 선형 큐
+public class Queue {
+	private Object[] queue;
+	private final int MAX_QUEUE_SIZE;
+	private int front, rear;
+
+	public Queue(int maxSize) {
+		MAX_QUEUE_SIZE = maxSize;
+		queue = new Object[MAX_QUEUE_SIZE];
+		front = rear = -1;
+	}
+
+	public boolean isEmpty() {
+		return front == rear;
+	}
+
+	public boolean isFull() {
+		return rear == MAX_QUEUE_SIZE - 1;
+	}
+
+	public void enQueue(Object item) {
+		if (isFull())
+			throw new RuntimeException("Queue Overflow");
+		queue[++rear] = item;
+	}
+
+	public Object front() {
+		if (isEmpty())
+			throw new RuntimeException("Queue Underflow");
+		return queue[front + 1];
+	}
+
+	public Object rear() {
+		if (isEmpty())
+			throw new RuntimeException("Queue Underflow");
+		return queue[rear];
+	}
+
+	public Object deQueue() {
+		Object result = front();
+		queue[++front] = null;
+		return result;
+	}
+
+	public int size() {
+		return rear - front;
+	}
+}
+
+
+// 2. 원형 큐
 
 ```
 
