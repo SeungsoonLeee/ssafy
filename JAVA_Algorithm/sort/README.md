@@ -2,11 +2,18 @@
 
 ### 1. Array Sorting
 
-**1.1. Bubble Sorting**
+**1.1. Bubble Sorting**  
+0번째 인덱스부터 바로 옆에 인접한 두 수를 비교하여 정렬.
 
-**1.2. Counting Sorting**
+**1.2. Counting Sorting**  
+숫자를 카운팅하며 정렬.
 
-**1.3. API : Arrays.sort**
+**1.3. Quick Sorting**  
+Pivot을 기준으로 pivot보다 작은 작은 값들과 크거나 같은 값들로 나누며 정렬.  
+![quicksortIMG](./quicksort.gif)  
+[출처 : 위키백과]
+
+**1.4. API : Arrays.sort**
 
 
 ### 2. Collection Sorting
