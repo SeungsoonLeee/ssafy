@@ -194,7 +194,7 @@ public class CircularQueue {
 ### 1.3. List
 
 >순서를 가진 데이터의 집합을 가리키는 추상자료형(abstract data type)
->>- 종류
+>>- 종류  
 >>순차리스트 : 배열을 기반으로 구현
 >>연결리스트 : 메모리의 동적 할당을 기반으로 구현
 
