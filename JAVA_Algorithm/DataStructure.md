@@ -6,7 +6,7 @@ ex) 배열 . . .
 ### 1.1. Stack
 
 >먼저 입력된 자료가 나중에 출력되는 FILO(=LIFO) 방식의 자료 구조.
->- stack 기본 메서드 : push, pop, peek, [isEmpty, size 등...]
+>>- stack 기본 메서드 : push, pop, peek, [isEmpty, size 등...]
 
 ```java
 // 자료구조 stack을 직접 구현해보자.
@@ -83,8 +83,8 @@ public class Stack {
 ### 1.2. Queue
 
 >먼저 입력된 자료가 먼저 출력되는 FIFO(=LILO) 방식의 자료 구조.
->- 종류 : 선형큐, 원형큐, 연결큐
->- Queue 기본 메서드 : enqueue, dequeue, front, rear, [isEmpty, size 등...]
+>>- 종류 : 선형큐, 원형큐, 연결큐
+>>- Queue 기본 메서드 : enqueue, dequeue, front, rear, [isEmpty, size 등...]
 
 ```java
 // 자료구조 Queue를 직접 구현해보자.
@@ -194,11 +194,13 @@ public class CircularQueue {
 ### 1.3. List
 
 >순서를 가진 데이터의 집합을 가리키는 추상자료형(abstract data type)
->- 종류
+>>- 종류
 >>순차리스트 : 배열을 기반으로 구현
 >>연결리스트 : 메모리의 동적 할당을 기반으로 구현
 
-
+```java
+// 리스트 구현
+```
 
 # 2. 비선형 자료구조
 1:N, N:N 구조의 자료 형태
