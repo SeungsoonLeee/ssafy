@@ -198,8 +198,215 @@ public class CircularQueue {
 >>순차리스트 : 배열을 기반으로 구현
 >>연결리스트 : 메모리의 동적 할당을 기반으로 구현
 
+
+#### 1.3.1. 단순 연결리스트(SimpleLinkedList)
+
+>연결 리스트에서 하나의 원소에 필요한 데이터를 갖고 있는 자료 단위
+>>- 구성  
+>>데이터 필드 : 원소의 값을 저장
+>>링크 필드 : 다음 노드의 주소를 저장
+
 ```java
-// 리스트 구현
+// 단순 연결리스트(SimpleLinkedList) 구현
+public class SimpleLinkedList {
+	// inner 클래스
+	private static class Node {
+		Object data;
+		Node link;
+
+		public Node() {
+		}
+
+		public Node(Object data) {
+			this.data = data;
+		}
+
+		public Node(Object data, Node link) {
+			this.data = data;
+			this.link = link;
+		}
+	}
+
+	private Node head; // 첫번째 노드를 가리키는 포인터 역할
+	private int size;
+
+	public void addFirstNode(Object data) {
+		Node newNode = new Node(data, head); // data와 link로 head를 가진 새 노드 생성
+		head = newNode; // head에 생성한 노드를 덮어씀
+		size++;
+	}
+
+	public Node getLastNode() {
+		Node current = head;
+		if (current != null) {
+			while (current.link != null) {
+				current = current.link;
+			}
+		}
+		return current;
+	}
+
+	public void addLastNode(Object data) {
+		Node lastNode = getLastNode(); // 마지막 노드를 찾고
+		Node newNode = new Node(data); // 새 노드를 생성하여
+		if (lastNode != null) {
+			lastNode.link = newNode; // 마지막 노드 뒤에 생성한 노드를 연결
+		} else { // 리스트가 공백이었을 경우엔 lastNode에 null이 들어옴
+			head = newNode;
+		}
+		size++;
+	}
+
+	public void deleteFirstNode() {
+		if (head == null) // 노드가 비어있는지를 확인하고
+			throw new RuntimeException("리스트가 이미 비어있습니다.");
+		Node temp = head; // 첫번째 노드를 temp에 저장해두고
+		head = head.link; // 첫번째 노드가 가지고 있는 link 노드를 head에 연결
+		temp.link = null; // temp에 저장한 첫번째 link 노드를 지움
+		size--;
+	}
+
+	public Node getPreviousNode(Node node) {
+		if (size < 2)
+			return null;
+		Node current = head;
+		if (current != null) {
+			while (current.link != node) {
+				current = current.link;
+			}
+		}
+		return current;
+	}
+
+	public int getSize() {
+		return size;
+	}
+
+	public void deleteLastNode() {
+		if (head == null) // 노드가 비어있는지를 확인
+			throw new RuntimeException("리스트가 이미 비어있습니다.");
+		Node lastNode = getLastNode(); // 마지막 노드를 찾고
+		Node previousNode = getPreviousNode(lastNode); // 마지막의 바로 이전 노드를 찾아
+		if (previousNode != null) {
+			previousNode.link = null; // 이전 노드에 연결된 link노드를 지움
+		} else {
+			head = null;
+		}
+		size--;
+	}
+
+	public void print() {
+		Node current = head;
+		while (current != null) {
+			System.out.print(current.data + " ");
+			current = current.link;
+		}
+		System.out.println();
+	}
+}
+```
+
+#### 1.3.2. 이중 연결리스트(DoublyLinkedList)
+
+>양쪽 방향으로 순회할 수 있도록 노드를 연결한 리스트
+>>- 구성  
+>>데이터필드 : 원소의 값을 저장
+>>링크 필드 : 두개의 링크 필드로 head와 tail 2군데를 연결
+
+```java
+// 이중 연결리스트(DoublyLinkedList) 구현
+public class DoublyLinkedList {
+	// inner 클래스
+	private static class Node {
+		Object data;
+		Node pre, next;
+
+		public Node() {
+		}
+
+		public Node(Object data) {
+			this.data = data;
+		}
+
+		public Node(Object data, Node pre, Node next) {
+			this.data = data;
+			this.pre = pre;
+			this.next = next;
+		}
+	}
+
+	private Node head;
+	private int size;
+
+	public void addFirstNode(Object data) {
+		Node newNode = new Node(data, null, head);
+		if (head != null) {
+			head.pre = newNode;
+		}
+		head = newNode;
+		size++;
+	}
+
+	public Node getLastNode() {
+		Node current = head;
+		if (current != null) {
+			while (current.next != null) {
+				current = current.next;
+			}
+		}
+		return current;
+	}
+
+	public void addLastNode(Object data) {
+		Node lastNode = getLastNode();
+		Node newNode = new Node(data);
+		if (lastNode != null) {
+			head = newNode;
+		} else {
+			lastNode.next = newNode;
+			newNode.pre = lastNode;
+		}
+		size++;
+	}
+
+	public void deleteFirstNode() {
+		if (head == null)
+			throw new RuntimeException("리스트가 이미 비어있습니다.");
+		Node temp = head;
+		head = head.next;
+		if (head != null)
+			head.pre = null;
+		temp.next = null;
+		size--;
+	}
+
+	public int getSize() {
+		return size;
+	}
+
+	public void deleteLastNode() {
+		if (head == null)
+			throw new RuntimeException("리스트가 이미 비어있습니다.");
+		Node lastNode = getLastNode();
+		Node preNode = lastNode.pre;
+		if (preNode != null) {
+			preNode.next = null;
+		} else {
+			head = null;
+		}
+		lastNode.pre = null;
+		size--;
+	}
+
+	public void print() {
+		Node current = head;
+		while (current != null) {
+			System.out.print(current.data + " ");
+			current = current.next;
+		}
+		System.out.println();
+	}
+}
 ```
 
 # 2. 비선형 자료구조
