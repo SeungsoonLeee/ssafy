@@ -83,7 +83,7 @@ public class Stack {
 2. Queue
 
 >먼저 입력된 자료가 먼저 출력되는 FIFO(=LILO) 방식의 자료 구조.
->- 종류 : 선형큐, 원형큐
+>- 종류 : 선형큐, 원형큐, 연결큐
 >- Queue 기본 메서드 : enqueue, dequeue, front, rear, [isEmpty, size 등...]
 
 ```java
@@ -136,10 +136,59 @@ public class Queue {
 		return rear - front;
 	}
 }
+```
 
+**※ 선형 큐의 문제점**  
+- 잘못된 포화상태 인식 : rear값이 배열의 끝에 다다르면 앞에 deQueue로 인해 비어있는 공간을 체크하지 못한 채 큐가 꽉 차있다고 판단하게 됨.  
+- 이러한 문제를 해결하기 위해 배열의 끝에 다다르면 배열의 첫번째로 다시 enQueue하는 형식의 **원형큐**를 사용한다.
 
+```java
 // 2. 원형 큐
+public class CircularQueue {
+	private Object[] queue;
+	private final int MAX_QUEUE_SIZE;
+	private int front, rear;
 
+	public CircularQueue(int maxSize) {
+		MAX_QUEUE_SIZE = maxSize;
+		queue = new Object[MAX_QUEUE_SIZE];
+		front = rear = 0; // 선형큐와 차이가 보이는 부분 체크
+	}
+
+	public boolean isEmpty() {
+		return front == rear;
+	}
+
+	public boolean isFull() {
+		return ((rear + 1) % MAX_QUEUE_SIZE) == front; // 체크
+	}
+
+	public void enQueue(Object item) {
+		if (isFull())
+			throw new RuntimeException("Queue Overflow");
+		rear = (rear + 1) % MAX_QUEUE_SIZE; // 체크
+		queue[rear] = item;// 체크
+	}
+
+	public Object front() {
+		if (isEmpty())
+			throw new RuntimeException("Queue Underflow");
+		return queue[(front + 1) % MAX_QUEUE_SIZE]; // 체크
+	}
+
+	public Object rear() {
+		if (isEmpty())
+			throw new RuntimeException("Queue Underflow");
+		return queue[rear];
+	}
+
+	public Object deQueue() {
+		Object result = front();
+		front = (front + 1) % MAX_QUEUE_SIZE; // 체크
+		queue[front] = null; // 체크
+		return result;
+	}
+}
 ```
 
 
