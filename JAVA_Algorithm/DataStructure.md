@@ -3,7 +3,7 @@
 
 ex) 배열 . . .
 
-###1.1. Stack
+### 1.1. Stack
 
 >먼저 입력된 자료가 나중에 출력되는 FILO(=LIFO) 방식의 자료 구조.
 >- stack 기본 메서드 : push, pop, peek, [isEmpty, size 등...]
@@ -80,7 +80,7 @@ public class Stack {
 }
 ```
 
-###1.2. Queue
+### 1.2. Queue
 
 >먼저 입력된 자료가 먼저 출력되는 FIFO(=LILO) 방식의 자료 구조.
 >- 종류 : 선형큐, 원형큐, 연결큐
@@ -197,7 +197,7 @@ public class CircularQueue {
 
 ex) 트리, 그래프 . . .
 
-###2.1. Tree
+### 2.1. Tree
 
 >.
 >- Tree
@@ -207,7 +207,7 @@ ex) 트리, 그래프 . . .
 
 ```
 
-###2.2. Graph
+### 2.2. Graph
 
 >.
 >- Graph
