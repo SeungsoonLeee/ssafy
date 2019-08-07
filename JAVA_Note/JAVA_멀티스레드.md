@@ -41,7 +41,6 @@ run() 메서드로 직접 호출 시 호출된 지점에서 돌려주기 때문�
 
 ### 4. Thread 상태와 제어  
 **1. Thread 상태**  
-![ThreadStatusIMG](./ThreadStatus.PNG)  
 
 ### 5. Thread 동기화  
 **1. Synchronized**  
