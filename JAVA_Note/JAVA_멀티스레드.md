@@ -2,8 +2,8 @@
 
 ### 1. 멀티 스레드 프로그래밍  
 1. Application과 Proccess  
-- Application : 하드웨어에 있는 프로그램  
-- Proccess : 메모리에 적재되어 개별적으로 동작하는 프로그램  
+- Application : 하드웨어에 있는 프로그램
+- Proccess : 메모리에 적재되어 개별적으로 동작하는 프로그램
 
 2. Thread와 Proccess  
 - Thread : 프로세스를 구성하는 작은 실행 단위  
