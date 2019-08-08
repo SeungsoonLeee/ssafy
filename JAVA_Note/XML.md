@@ -36,3 +36,16 @@
 
 ### 4. XML 문서 구성
 ![XMLDocumentIMG](./XMLDocument.PNG)
+
+### 5. namespace  
+- xmlms:prefix="구조 URL"  
+- 태그 <prefix:태그명></prefix:태그명>    
+
+### 6. XML API  
+
+**1. SAX**  
+속도가 빠르나 search만 가능함.  
+
+**2. DOM**  
+속도가 느리나 추가, 수정, 삭제가 가능함.  
+
