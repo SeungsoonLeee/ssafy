@@ -434,7 +434,7 @@ ex) 트리, 그래프 . . .
 >>![TreeIMG](./Tree.PNG)  
 >>전위 : A B D E H I C F G  
 >>중위 : D B H E I A F C G  
->>후의 : D H I E B F G C A  
+>>후위 : D H I E B F G C A  
 
 #### 2.1.1. 이진트리(Binary Tree)
 
