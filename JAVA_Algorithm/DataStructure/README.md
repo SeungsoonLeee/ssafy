@@ -5,7 +5,7 @@ ex) 배열 . . .
 
 ### 1.1. Stack
 
->먼저 입력된 자료가 나중에 출력되는 FILO(=LIFO) 방식의 자료 구조.
+>먼저 입력된 자료가 나중에 출력되는 FILO(=LIFO) 방식의 자료 구조  
 >>- stack 기본 메서드 : push, pop, peek, [isEmpty, size 등...]
 
 ```java
@@ -82,9 +82,9 @@ public class Stack {
 
 ### 1.2. Queue
 
->먼저 입력된 자료가 먼저 출력되는 FIFO(=LILO) 방식의 자료 구조.
->>- 종류 : 선형큐, 원형큐, 연결큐
->>- Queue 기본 메서드 : enqueue, dequeue, front, rear, [isEmpty, size 등...]
+>먼저 입력된 자료가 먼저 출력되는 FIFO(=LILO) 방식의 자료 구조  
+>>- 종류 : 선형큐, 원형큐, 연결큐  
+>>- Queue 기본 메서드 : enqueue, dequeue, front, rear, [isEmpty, size 등...]  
 
 ```java
 // 자료구조 Queue를 직접 구현해보자.
@@ -193,18 +193,18 @@ public class CircularQueue {
 
 ### 1.3. List
 
->순서를 가진 데이터의 집합을 가리키는 추상자료형(abstract data type)
+>순서를 가진 데이터의 집합을 가리키는 추상자료형(abstract data type)  
 >>- 종류  
->>순차리스트 : 배열을 기반으로 구현
->>연결리스트 : 메모리의 동적 할당을 기반으로 구현
+>>순차리스트 : 배열을 기반으로 구현  
+>>연결리스트 : 메모리의 동적 할당을 기반으로 구현  
 
 
 #### 1.3.1. 단순 연결리스트(SimpleLinkedList)
 
->연결 리스트에서 하나의 원소에 필요한 데이터를 갖고 있는 자료 단위
+>연결 리스트에서 하나의 원소에 필요한 데이터를 갖고 있는 자료 단위  
 >>- 구성  
->>데이터 필드 : 원소의 값을 저장
->>링크 필드 : 다음 노드의 주소를 저장
+>>데이터 필드 : 원소의 값을 저장  
+>>링크 필드 : 다음 노드의 주소를 저장  
 
 ```java
 // 단순 연결리스트(SimpleLinkedList) 구현
@@ -308,10 +308,10 @@ public class SimpleLinkedList {
 
 #### 1.3.2. 이중 연결리스트(DoublyLinkedList)
 
->양쪽 방향으로 순회할 수 있도록 노드를 연결한 리스트
+>양쪽 방향으로 순회할 수 있도록 노드를 연결한 리스트  
 >>- 구성  
 >>데이터필드 : 원소의 값을 저장  
->>링크 필드 : 두개의 링크 필드로 head와 tail 2군데를 연결
+>>링크 필드 : 두개의 링크 필드로 head와 tail 2군데를 연결  
 
 ```java
 // 이중 연결리스트(DoublyLinkedList) 구현
