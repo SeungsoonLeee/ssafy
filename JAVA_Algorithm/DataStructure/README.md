@@ -427,6 +427,14 @@ ex) 트리, 그래프 . . .
 >>서브 트리(sub tree) : 부모 노드와 연결된 간선을 끊었을 때 생성되는 트리  
 >>차수(degree) : 노드에 연결된 자식 노드의 수  
 >>높이 : 루트에서 노드에 이르는 간선 수  
+>>- 트리의 순회  
+>>전위 순회(preorder traversal) : 부모노드 방문 후 자식노드를 좌->우 순으로 방문  
+>>중위 순회(inorder traversal) : 왼쪽 자식노드, 부모, 오른쪽 자식노드 순으로 방문  
+>>후위 순회(postorder traversal) : 자식노드를 좌->우 순으로 방문 후 부모노드를 방문  
+>>![TreeIMG](./Tree.PNG)  
+>>전위 : A B D E H I C F G  
+>>중위 : D B H E I A F C G  
+>>후의 : D H I E B F G C A  
 
 #### 2.1.1. 이진트리(Binary Tree)
 
