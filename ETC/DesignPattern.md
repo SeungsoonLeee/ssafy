@@ -27,3 +27,6 @@ public class MySingleton{
 	}
 }
 ```
+
+# MVC(Model-View-Controller) Pattern 
+
