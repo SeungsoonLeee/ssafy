@@ -5,7 +5,7 @@
 
 
 ### 1. Prim 알고리즘
-
+![PrimIMG](./Prim.PNG)  
 
 ### 2. KRUSKAL 알고리즘
-
+![KruskalIMG](./Kruskal.PNG)  
