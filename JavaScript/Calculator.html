@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<style type="text/css">
+#calc {
+	border: 1px solid gray;
+	width: 350px;
+	text-align: center;
+}
+
+#formula {
+	text-align: right;
+	width: 80%;
+	margin-top: 10px;
+	margin-bottom: 10px;
+}
+
+#resultDiv {
+	text-align: left;
+	margin-left: 40px;
+}
+
+button {
+	width: 70px;
+	height: 70px;
+}
+</style>
+<script type="text/javascript">
+	var cnt = 1;
+	function input(data) {
+		var formula = document.getElementById('formula');
+		var result = document.getElementById('result');
+		if (data == 'C') {
+			formula.value = '';
+		} else if (data == '=') {
+			try {
+				var r = eval(formula.value);
+				result.innerHTML += cnt++ + '. ' + formula.value + '=' + r + '<br>';
+			} catch (e) {
+				alert('계산식이 올바르지 않습니다.');
+			} finally {
+				formula.value = '';
+			}
+		} else {
+			formula.value += data;
+		}
+	}
+</script>
+</head>
+<body>
+	<div id='calc'>
+		<input type='text' id='formula' value='' placeholder='0.0'
+			readonly="readonly" />
+		<div id='pad'>
+			<button id='bt7' name='bt7' onclick="input(7);">7</button>
+			<button id='bt8' name='bt8' onclick="input(8);">8</button>
+			<button id='bt9' name='bt9' onclick="input(9);">9</button>
+			<button id='btplus' name='btplus' onclick="input('+');">+</button>
+			<button id='bt4' name='bt4' onclick="input(4);">4</button>
+			<button id='bt5' name='bt5' onclick="input(5);">5</button>
+			<button id='bt6' name='bt6' onclick="input(6);">6</button>
+			<button id='btminus' name='btminus' onclick="input('-');">-</button>
+			<button id='bt1' name='bt1' onclick="input(1);">1</button>
+			<button id='bt2' name='bt2' onclick="input(2);">2</button>
+			<button id='bt3' name='bt3' onclick="input(3);">3</button>
+			<button id='btmul' name='btmul' onclick="input('*');">*</button>
+			<button id='bt0' name='bt0' onclick="input(0);">0</button>
+			<button id='btclear' name='btclear' onclick="input('C');">CE</button>
+			<button id='btcal' name='btcal' onclick="input('=');">=</button>
+			<button id='btdiv' name='btdiv' onclick="input('/');">/</button>
+		</div>
+		<div id='resultDiv'>
+			<h2>결과 이력</h2>
+			<p id='result'></p>
+		</div>
+	</div>
+</body>
+</html>
+
+
+
+
+
+
