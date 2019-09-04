@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>script 사용하는 방법 3가지</title>
+<!-- 1.file로 작성된 js 적용 -->
+<script type="text/javascript" src="../test2.js"></script>
+<script type="text/javascript" src="../js/test.js"></script>
+<!-- 2.html 내부에서 script 선언 -->
+<script type="text/javascript">
+	console.log('html 내부에서 script 작성...');
+</script>
+</head>
+<!-- head에서 작성한 함수를 body에서 호출 -->
+<body onload="alert('body tag에서 수행')">
+	<script type="text/javascript">
+		console.log('body 내부에서 cript 작성')
+	</script>
+	<a href="javascript:alert('a tag에서 수행')">script 수행</a>
+	<br>
+	<a href="#" onclick="alert('a tag에서 수행')">script 수행</a>
+</body>
+</html>
+
+
