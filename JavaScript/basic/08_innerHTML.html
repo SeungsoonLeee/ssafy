@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script type="text/javascript">
+	function addContent(){
+		var content = document.getElementById('content');
+		//innerHTML : 해당 페이지의 body
+		content.innerHTML += '<h1>hello</h1>';
+		content.innerText += '<h1>hello</h1>';
+	}
+</script>
+</head>
+<body>
+	<button  onclick='addContent()'>추가</button>
+	<div  id='content'></div>	
+</body>
+</html>

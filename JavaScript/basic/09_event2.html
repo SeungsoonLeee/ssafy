@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script type="text/javascript">
+	window.onload = function() {
+		var click = document.getElementById('click');
+		click.addEventListener('click', function(e) {
+			console.log(this); // this : 이벤트가 발생한 대상
+			var content = document.getElementById('content');
+			content.innerHTML += '<h2>이얏호!</2>';
+		});
+		var cancel = document.getElementById('cancel');
+		cancel.addEventListener('click', eventHandler);
+	}
+	
+	
+	function eventHandler() {
+		var content = document.getElementById('content');
+		content.innerHTML = '';
+	}
+</script>
+</script>
+</head>
+<body>
+	<button id='click'>click</button>
+	<button id='cancel'>cancel</button>
+	<div id='content'></div>
+</body>
+</html>
+
+
+
+
+
+
+
+
