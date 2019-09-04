@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<style type="text/css">
+	#submenu{ 		display: none; 	}
+</style>
+<script type="text/javascript">
+    //3초후에 eventFun()함수가 호출되도록 설정
+	function eventFunc(){
+    	var submenu = document.getElementById('submenu');
+    	submenu.style.display = 'block';
+    }
+    setTimeout(eventFunc, 3000);
+</script>
+</head>
+<body>
+	<div id="content">
+		<div id='submenu'>
+		   <ul>
+		   		<li>menu1</li>
+		   		<li>menu2</li>
+		   		<li>menu3</li>
+		   </ul>
+		</div>
+	</div>
+	
+</body>
+</html>
