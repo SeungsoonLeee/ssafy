@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script type='text/javascript' src='../js/jquery-3.3.1.js'></script>
+<script type="text/javascript">
+$(function(){
+	$('#calc').bind('click', function(evt){
+		$.ajax({
+		url : 'jsp/plus_ajax3_xml.jsp',
+			data : {
+				no : 1   //게시글 번호 
+			},
+			dataType : 'xml', 
+			success : processResult,
+			error : function(err){
+				console.log(err);
+			}
+		})
+	});
+});
+function processResult(xmlData, status, xhr){
+	var errorMsg = $('error',xmlData).text(); //<error>의 body 정보 추출
+	if(errorMsg !=''){ //error가 발생한경우 
+		alert(errorMsg);
+	}else{
+		//서버로부터 받는 xml 데이터에서 data태그를 찾음
+		$('data',xmlData).each(function(index, item){
+			var html="<table><tr><td>게시글 번호</td><td>";
+			html+= $('no',item).text();
+			html+="</td></tr><tr><td>제 목</td><td>";
+			html+= $('title',item).text();
+			html+="</td></tr><tr><td>작성자</td><td>";
+			html+= $('id',item).text();
+			html+="</td></tr><tr><td colspan='2'>";
+			html+= $('content',item).text();
+			html+="</td></tr></table>";
+			$('#content').append(html);
+		});
+	}
+}
+</script>
+</head>
+<body>
+<button id="calc">게시글 보기</button>
+<div id="content"></div>
+<hr/>
+</body>
+
+
+
+
+
+</html>
