@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script type='text/javascript' src='../js/jquery-3.3.1.js'></script>
+<script type="text/javascript">
+$(function(){
+	/*
+		선택된 요소에 한개 이상의 이벤트를 붙이기 
+		$(선택자).on({
+						이벤트명:함수,
+						이벤트명:함수,
+						,...						
+		             })
+	*/
+	
+//	$('h1').on({
+//		mouseenter: function() { $(this).addClass('reverse')}
+//		,mouseleave: function() { $(this).removeClass('reverse')}			
+//	});
+ 	
+	$('h1').hover(
+		function() { $(this).addClass('reverse')}
+		,function() { $(this).removeClass('reverse')}			
+	);
+});
+</script>
+<style type="text/css">
+.reverse {
+	background: pink;
+	color: purple;
+}
+</style>
+</head>
+<body>
+	<h1>header - 0</h1>
+	<h1>header - 1</h1>
+	<h1>header - 2</h1>
+	<h1>header - 3</h1>
+</body>
+</html>
