@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script type='text/javascript' src='../js/jquery-3.3.1.js'></script>
+<script>
+$(function() {
+	$('#deleteB').click(function() {
+		//remove() : 해당 요소 하나를 삭제
+		$('#content > h1:first').remove();
+	})
+	
+	$('#deleteAllB').click(function() {
+		//empty() : 해당 요소 하나를 삭제
+		$('#content').empty();
+	})
+})
+</script>
+</head>
+<body>
+	<button id="deleteB">삭제</button>
+	<button id="deleteAllB">모두 삭제</button>
+	<div id='content'>
+		<h1>header-0</h1>
+		<h1>header-1</h1>
+		<h1>header-2</h1>
+		<h1>header-3</h1>
+		<h1>header-4</h1>
+		<h1>header-5</h1>
+	</div>
+</body>
+</html>
