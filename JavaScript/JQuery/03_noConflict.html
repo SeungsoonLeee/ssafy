@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script type='text/javascript' src='../js/jquery-3.3.1.js'></script>
+<script>
+	/*
+	$.noConflict()
+	prototype도 $를 이용하므로 jQuery와 같이 사용하면 충돌이 난다.
+	따라서, jQuery에서는 $를 사용하지 못하고 jQuery() 함수로만 사용하도록 설정
+	*/
+	
+	$.noConflict();
+	// $.noConflict() 했기 때문에 아래는 에러가 남
+	$(function() {
+		console.log('jQuery에서 $를 못쓰게 함');
+	})
+	
+</script>
+</head>
+<body>
+
+</body>
+</html>
