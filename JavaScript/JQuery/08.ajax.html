@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script type='text/javascript' src='../js/jquery-3.3.1.js'></script>
+<script type="text/javascript">
+$(function(){
+	$('#calc').click(function () {
+		$.ajax({
+			url : 'jsp/plus_ajax.jsp'	//비동기적으로 데이터를 요청할 서버 url
+			,data : { op1:$('#op1').val(), op2:$('#op2').val() }	//요청 데이터
+			,dataType : 'json'	//서버에서 받을 데이터 타입
+			,success : function(data, status, xhr){ //서버로부터 데이터를 성공적으로 받으면
+				$('#result').val(data.result);
+			}
+			,error : function(err) {
+				console.log(err);
+			}
+		});
+	});
+});
+</script>
+</head>
+<body>
+<input type="text" id="op1"/> + <input type="text" id="op2"/>
+<button id="calc">=</button><input type="text" readonly="readonly" id="result"/>
+<hr/>
+</body>
+
+
+
+
+
+</html>

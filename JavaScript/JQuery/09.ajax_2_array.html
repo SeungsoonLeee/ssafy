@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script type='text/javascript' src='../js/jquery-3.3.1.js'></script>
+<script type="text/javascript">
+$(function(){
+	$('#calc').click(function () {
+		$.ajax({
+			url : 'jsp/result.jsp'
+			,dataType : 'json'
+			,success : processResult
+			,error : function(err) {
+				alert(err);
+			}
+		})
+	})
+});
+function processResult(data, status, xhr){
+	var list = data.friendList;
+	$.each(list, function(idx, item) {
+		console.log(idx, item, this);
+		var f = item.friend;
+		$('<div>').append('name : ' + f.name + ' addr : ' + f.addr).append('</div><br>')
+		.appendTo('#content');
+	})
+}
+</script>
+</head>
+<body>
+<button id="calc">게시글 보기</button>
+<div id="content"></div>
+<hr/>
+</body>
+
+
+
+
+
+</html>
