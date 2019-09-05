@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script type='text/javascript' src='../js/jquery-3.3.1.js'></script>
+<script>
+	/*
+	 val() : input 양식의 value값을 추출
+	 val('값') : input 양식의 value값을 설정
+	 */
+	$(function() {
+		// click(function(){}) : 선택자에 해다하는 요소가 click 되면 인자로 지정한 함수가 수행됨
+		$('#loginb').click(function() {
+			console.log($('#id').val());
+
+			var hobby = $('#hobby:checked');
+			for (var i = 0; i < hobby.length; i++) {
+				console.log( $(hobby.get(i)).val() );
+			}
+
+			$('#id').val('ssafy');
+		});
+	});
+</script>
+
+</head>
+<body>
+	<form>
+		아이디 : <input type='text' id='id' name='id' /> <br /> 취미:<input
+			type='checkbox' id='hobby' name='hobby' value='read' />독서 취미:<input
+			type='checkbox' id='hobby' name='hobby' value='movie' />영화 <br /> <input
+			type='button' id='loginb' value='로그인' />
+	</form>
+</body>
+</html>
+
+
+
+
