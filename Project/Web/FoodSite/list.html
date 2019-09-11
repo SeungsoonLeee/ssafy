@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap-theme.min.css">
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
+<link rel="stylesheet" href="css/index.css">
+<script type="text/javascript">
+$(function(){
+	$.ajax({
+		url : 'res/foodInfo.xml',
+		dataType : 'xml', 
+		success : processResult,
+		error : function(err){
+			console.log(err);
+		}
+	})
+});
+function processResult(xmlData, status, xhr){
+	var errorMsg = $('error',xmlData).text(); //<error>의 body 정보 추출
+	if(errorMsg !=''){ //error가 발생한경우 
+		alert(errorMsg);
+	}else{
+		//서버로부터 받는 xml 데이터에서 data태그를 찾음
+		$('#productList').empty();
+		$('food',xmlData).each(function(index, item){
+			var html="<table id='listTable' align='center' width='80%' >";
+			html+= "<tr id='listTableFistTr'><td rowspan='4' width='20%'><img src='";
+			html+= $('image',item).text();
+			html+= "' id='";
+			html+= $('name',item).text();
+			html+= "' width='260px' height='260px' class='imgContent'></td><td id='listTableFistTd' align='left' height='10%'><b>";
+			html+= "<font size='5px'>";
+			html+= $('name',item).text();
+			html+= "</font></b></td></tr><tr><td align='left' height='10%'>";
+			html+= "<a href='#'><i class='fa fa-calendar'></i> Feb, 2007</a>&nbsp;&nbsp;&nbsp;";
+			html+= "<a href='#'><i class='fa fa-tag'></i> Web Design</a>";
+			html+= "<hr></td></tr><tr><td align='left'>";
+			html+= $('material',item).text();
+			html+= "</td></tr><tr id='listTableLastTr'><td align='left' height='10%'>";
+			html+= "<button type='button' class='btn btn-info'><i class='fa fa-plus'></i> 추가</button>";
+			html+= "<button type='button' class='btn btn-info'><i class='fa fa-star'></i> 찜</button>";
+			html+= "</td></tr></table>";
+			$('#productList').append(html);
+		});
+	}
+}
+</script>
+</head>
+<body>
+	<div id="productList"></div>
+</body>
+</html>
