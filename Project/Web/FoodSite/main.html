@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap-theme.min.css">
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
+<link rel="stylesheet" href="css/index.css">
+<script type='text/javascript' src='js/jquery-3.3.1.js'></script>
+<script type="text/javascript">
+	$(function() {
+		$("#contentArea2").load("list.html");
+		
+		$("#searchBtn").click(function() {
+			$("#contentArea2").load("nameSearchList.html");
+		});
+
+		$('body').on('click', 'img', function() {
+			var imgId = $(this).attr("id");
+			console.log(imgId);
+			$('#detailItem').val(imgId);
+			$("#contentArea2").load("detailList.html");
+		});
+	});
+</script>
+</head>
+<body>
+	<input type="hidden" id="detailItem" value="">
+	<section id='intro'>
+		<div id='introFirstComment'>
+			<font>WHAT WE <b>PROVIDE</b></font>
+		</div>
+		<div>
+			건강한 삶을 위한 먹거리 프로젝트
+		</div>
+	</section>
+	<section id='searchForm'>
+		<table>
+			<tr>
+				<td>검색 조건</td>
+				<td>검색 단어</td>
+				<td></td>
+			</tr>
+			<tr>
+				<td><select class="form-control" id="searchOption">
+						<option>상품명</option>
+						<option>제조사</option>
+						<option>첨가재료</option>
+						<option>기타</option>
+				</select></td>
+				<td><input type="text" class="form-control" id="searchItem"></td>
+				<td><button type="button" class="btn btn-primary" id="searchBtn">검색</button></td>
+			</tr>
+		</table>
+	</section>
+	<div id="contentArea2"></div>
+</body>
+</html>
