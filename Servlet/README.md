@@ -18,12 +18,11 @@
 ### 10.3. Cookie 생성 및 추출  
 
 ``` java
-
 protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 	// 쿠키 생성
 	Cookie cookie = new Cookie("name", URLEncoder.encode("쿠키 테스트"));
 	
-	// 쿠키 유효시간 설정(음수:메모리에만 저장, 0:쿠키 삭제, 양수:지정시간동안 메모리에 저장)
+	// 쿠키 유효시간 설정(음수:메모리에만 저장->브라우저 종료시 쿠키 삭제, 0:쿠키 삭제, 양수:지정시간동안 메모리에 저장)
 	// 365일에 대하 쿠키 유효시간 설정(초단위)
 	cookie.setMaxAge(365 * 24 * 3600);
 	
@@ -40,4 +39,30 @@ protected void doPost(HttpServletRequest request, HttpServletResponse response) 
 ```
 
 ## 11. Session  
+1. 클라이언트가 특정 도메인에 요청  
+2. 서버는 접속한 클라이언트에 대한 session id를 생성하고 그 값을 저장  
+3. 서버는 session id와 함께 클라이언트에게 응답  
+4. 클라이언트는 session id를 쿠키로 저장(이때 쿠키늬 이름은 'jsessionid'이다.)  
+5. 클라이언트가 도메인에 재요청시 저장된 session id를 서버에 넘김  
+6. 서버는 클라이언트에서 받은 session id를 이용하여 클라이언트를 구별  
 
+### 10.1. Session 생성  
+
+``` java
+
+protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+	// 세션이 잇으면 리턴하고 없으면 새로 생성하여 리턴
+	// false : 설정 시 세션이 없으면 null리턴 
+	HttpSession session = getSession();
+	
+	// 세션 타임아웃 시간 설정
+	session.setMaxInactiveInterval(초단위);
+	
+	// 세션 적용(?)
+	if(session.isNew()){
+		session.setAttribute("userID", "user");
+	}else {
+		session.getAttribute("userID");
+	}
+}
+```
