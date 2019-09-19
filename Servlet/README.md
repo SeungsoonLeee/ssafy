@@ -46,7 +46,7 @@ protected void doPost(HttpServletRequest request, HttpServletResponse response) 
 5. 클라이언트가 도메인에 재요청시 저장된 session id를 서버에 넘김  
 6. 서버는 클라이언트에서 받은 session id를 이용하여 클라이언트를 구별  
 
-### 10.1. Session 생성  
+### 11.1. Session 생성  
 
 ``` java
 
