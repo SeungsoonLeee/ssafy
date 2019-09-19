@@ -12,7 +12,7 @@ Model, View, Controller로 구성된 디자인 패턴
 
 ### Controller  
 1. Servlet  
- - 요청 데이터 추출  
+> - 요청 데이터 추출  
  - 모델 수행  
  - request에 저장  
  - 페이지 이동  
