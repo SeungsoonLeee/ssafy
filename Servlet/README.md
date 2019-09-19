@@ -31,7 +31,7 @@ protected void doPost(HttpServletRequest request, HttpServletResponse response) 
 	response.addCookie(cookie);
 	
 	// 쿠키 추출(배열 단위로 받아옴)
-	Cookie cookies = request.getCookies();
+	Cookie[] cookies = request.getCookies();
 	for{
 		out.println(cookies[i].getName());
 		out.println(URLDecoder.decode(cookies[i].getValue()));
