@@ -8,6 +8,7 @@
 
 ### 10.3. EL(Expression Language)  
 JSP 스크립트를 대신하여 속성 값을 쉽게 출력하도록 고안된 Language  
+EL은 내장객체로 저장되어 있거나 4개의 scope영역에 setAttribute로 저장된 정보들만 접근이 가능하다.  
 1. HTML 출력 위치 : 출력역할  
 2. JSTL 태그 내 속성값 위치   : 표현식 처리 결과 전달 역할
 
