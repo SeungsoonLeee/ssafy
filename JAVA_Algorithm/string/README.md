@@ -4,13 +4,8 @@
 ![라빈카프IMG](./String1.PNG)  
 
 ## 2. KMP 알고리즘
-![KMPIMG](./String2.PNG)  
-
-## 3. 보이어-무어 알고리즘
-![보이어무어IMG](./String3.PNG)  
-
-## 4. KMP
 불일치가 발생한 텍스트 문자열의 앞 부분에 어떤 문자가 있는지를 미리 알고 있으므로 불일치가 발생한 앞 부분에 대하여 다시 비교하지 않고 비교
+![KMPIMG](./String2.PNG)  
 
 ```java
 public class KMPTest {
@@ -51,4 +46,8 @@ public class KMPTest {
 	}
 }
 ```
+
+## 3. 보이어-무어 알고리즘
+![보이어무어IMG](./String3.PNG)  
+
 
