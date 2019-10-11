@@ -1,0 +1,3 @@
+C:\Program Files\MySQL\MySQL Workbench 8.0 CE\data\code_editer.xml ¼öÁ¤ 
+    <style id="1" fore-color="#9900FF" /> <!-- SCE_MYSQL_COMMENT -->
+    <style id="2" fore-color="#9900FF" /> <!-- SCE_MYSQL_COMMENTLINE -->
