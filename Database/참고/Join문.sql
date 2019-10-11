@@ -203,8 +203,7 @@ group by gno;
 
  - right join 
   select [distinct]   *|컬럼명 [as alias]
-  from   테이블명 [alias] 
-  right [outer] join   테이블명 [alias]
+  from   테이블명 [alias] right [outer] join   테이블명 [alias]
   on 조인 조건 | using(조인 컬럼)
 */
 
