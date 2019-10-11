@@ -1,289 +1,303 @@
-/*
- Join 
- - 두개 이상의 테이블을 연결해서 질의하는 것
- - 종류 
-    1. 데이타 추출되는 것에 따라 
-      Inner Join : 
-        - 조인을 위해 사용하는 비교 조건에 맞는 데이타만 조회
-        - 조인 조건에 맞지 않은 데이타는 조회 되지 않는다. 
-        - join할 때  outer join으로 표시 하지 않으면 기본적으로 
-          Inner join으로 조회된다. 
-	  Outer Join 
-        - 조인을 위해 사용하는 비교 조건에 맞지 않는 데이타도 조회된다. 
-		- 종류 
-          left outer join  : 비교 조건에 맞지 않은 왼쪽 테이블의 데이타도 조회됨
-          right outer join : 비교 조건에 맞지 않은 오른쪽 테이블의 데이타도 조회됨
-          full outer join  : 비교 조건에 맞지 않은 양쪽 테이블의 모든 데이타가 조회됨
-    2. 비교 조건에 따라서 
-	  Equi join 
-        - 비교하는 두 컬럼의 데이타가 정확하게 일치할 경우 
-        - join 조건으로 = 비교 연산자를 이용할 경우 
-      Non Equi join 
-        - 비교하는 두 컬럼의 데이타가 정확하게 일치하지 경우 
-        - join 조건으로  >, < , >= , <=, != 등
-    3. 비교 테이블에 따라서 
-	  self join 
-        - join할 테이블이 다른 테이블이 아닌 self(한개의 테이블로 join)
-        - 테이블을 구별하기 위해 반드시 alias를 사용해야 한다. 
-        
-	4. 카티시안 곱 
-      - 조인 조건을 생략했을 때 두 테이블의 모든 row를 연결한 결과가 조회된다. 
-	  - N * M의 수만큼 행이 조회된다. 
-*/
+-- 업무별 급여 평균이 2000이상인 업무들을 조회
+select job, avg(sal) as avgSal
+from emp
+group by job
+having avgSal >= 2000;
 
--- 카티시안 곱 
-select * 
-from   category, goods;
+-- 부서별 급여 평균과, 전체 급여 평균을 조회하시오  
+-- 단 부서가 없는 사원은 프리랜서로 표시
+select if(grouping(deptno)=0, ifnull(deptno, '프리랜서'), '전체평균') as deptno, avg(sal) as avgSal
+from emp
+group by deptno with rollup;
 
-/*
- inner join 
- -DB 벤더 전용(oracle, mysql, db2, ms-sql)
-  select [distinct]   *|컬럼명 [as alias]
-  from   테이블명 [alias], 테이블명 [alias] , 
-  [where  조건]
-  [group by 컬럼명, .. [having 조건]]
-  [order by 컬럼명 [asc|desc]], ...]
-  
- -ANSI query 
-  select [distinct]   *|컬럼명 [as alias]
-  from   테이블명 [alias]
-  join   테이블명 [alias]
-  on 조인 조건 | using(조인 컬럼)
-  ,...
-  [where  조건]
-  [group by 컬럼명, .. [having 조건]]
-  [order by 컬럼명 [asc|desc]], ...]	
+
+-- 사원번호, 이름, 급여, 부서번호, 부서명을 조회하시오
+-- 단 부서에 배치되지 않은 사원도 조회하시오
+select empno, ename, sal, e.deptno, d.dname
+from emp as e left join dept as d
+on e.deptno = d.deptno;
+
+
+-- 게시글 3번에 대해 게시글번호, 작성자, 타이틀, 작성일(연-월-일), 내용
+-- 작성자가 올린파일 이름, 시스템에 저장된 파일 이름을 조회하시오
+select b.no, id, title, date_format(regdate, '%y-%m-%d') as date, contents
+from board b left join boardfile bf
+on b.no = bf.no
+where b.no = 3;
+
+
+/* SubQuery
+   - Query문 내에 작성하는 Query를 SubQuery라고한다.
+   - 기본적으로 외부 Query가 수행되기 전에 SubQuery가 먼저 수행되고 그결과를 
+     외부 Query에서 사용한다. 
+     단, 상호 연관 쿼리는 외부 Query한행에 대해 SubQuery가 수행되므로
+         SubQuery는 외부 Query의 행 수만큼 수행된다. 
+   - 종류
+     - where절에서 사용하는 단일행, 다중행, 다중열, 상호 연관 subquery
+     - from절에서 사용하는 inline view
+     - 스칼라 서브쿼리(단일행, 단일열)로 조회되는 sub query
+   - sub query가 사용되는 위치 
+     select절, from절, where절, having절, order절  => group by절 빼고 
+     create table문, insert문, update문, delete문
+   - 규칙
+     sub query를 작성시 ()내에 작성해야 한다. 
+ */
  
-  using 
-   - 조인을 위한 비교 컬럼명이 동일 할 때 사용 
-   - alias 없이 사용해야 한다. => alias를 사용할 경우 error발생 
-   - 비교 조건은 기본적으로 = 이 적용된다. 
-  on
-   - 조인을 위한 비교 컬럼명이 다르거나 비교 조건이 = 이 아닐때 사용한다. 
-   - 조인을 위한 비교 컬럼이 같을 경우 alias를 사용해서 구분한다. 
+/*
+  select절의 sub query(스칼라 서브쿼리)
+  - outer join한것과 같은 효과 
+*/
+ -- 사원번호, 이름, 급여, 부서번호, 부서명을 조회 
+select empno, ename, sal, e.deptno
+	,(select dname from dept where e.deptno = dept.deptno) as dname
+    ,(select loc from dept where e.deptno = dept.deptno) as loc
+from emp e;
+
+ 
+ /*
+   where절 sub Query
+   - sub query를 수행한 결과를 where절에서 비교 데이타로 사용 
+   - 종류
+     단일 행 서브쿼리 
+       - 서브 쿼리로 부터 수행된 결과 행이 하나일 때
+       - 비교 조건 =, >, >=, <, <=, != 
+     다중 행 서브쿼리 
+       - 서브 쿼리로 부터 수행된 결과 행이 둘 이상일 때
+       - 비교 조건 in, any, all
+     다중 열 서브쿼리 
+       - 서브 쿼리로 부터 수행된 결과 열이 둘 이상일 때 
+     상호 연관 서브쿼리 
+       - 외부 질의에서 사용 하는 컬럼을 subquery의 조건으로 사용 
+ */
+ 
+ -- 단일 행 서브쿼리 
+ -- 사원번호가 7369인 사원의 업무와 같은 업무를 하는 사원의 모든 조회
+ select *
+ from emp
+ where job = (select job from emp where empno = 7369);
+ 
+ select * from emp where empno=7369;
+ 
+ 
+ -- 평균 급여보다 많이 받는 사원의 모든 정보를 조회
+ select *
+ from emp
+ where sal > (select avg(sal) from emp);
+  
+select avg(sal) from emp;
+
+
+-- 업무가 'MANAGER'인 사원들 중 전체 사원의 평균 급여보다 많이 받는 사원들에 대해
+-- 사원번호, 업무, 급여, 급여 등급을 조회
+select empno, job, sal, grade
+from emp join salgrade
+on sal between losal and hisal
+where job = 'MANAGER' and sal > (select avg(sal) from emp);
+
+
+
+/* 다중행 sub qeury
+   - in 
+     sub query를 통해 조회된 여러 데이타 중 하나와 일치하면 조회된다. 
+   - all 
+	 >(>=) all  sub query를 통해 조회된 모든 데이타 보다 커야 한다. 
+				=> 가장 큰 값 보다 커야한다.
+     <(<=) all  sub query를 통해 조회된 모든 데이타 보다 작아야 한다.
+				=> 가장 작은 값보다 작아야한다.
+   - any
+     >(>=) any  sub query를 통해 조회된 데이타 중 하나라도 커야 한다.  
+				=> 가장 작은 값보다 커야한다. 
+     <(<=) any  sub query를 통해 조회된 데이타 중 하나라도 작아야 한다
+				=> 가장 큰값 보다 작아야 한다. 
+     = any => in과 같으므로 잘 안씀.
 */
 
--- inner join  벤더 전용
--- 상품번호, 상품이름, 상품 가격, 분류번호, 분류명을 조회
-select gno, brand, price, goods.cno as cno, name
-from   goods , category 
-where  goods.cno = category.cno;
-
--- 테이블에 alias를 적용
-select gno, brand, price, g.cno as cno, name
-from   goods g, category c
-where  g.cno = c.cno;
-
--- ansi query
-select gno, brand, price, cno, name
-from   goods 
-join   category
-using  (cno);
-
-select gno, brand, price, g.cno as cno, name
-from   goods g
-join   category c
-on     g.cno = c.cno;
-
-select * from orders;
-
--- 주문일, 주문 번호, 주문한 상품 번호, 상품명, 주문자 id
--- , 상품가격, 주문 수량, 주문 금액을 조회하시오.
--- vender 전용
-select odate,ono, o.gno as gno , brand
-       , id, price, quantity, price*quantity as totalPrice
-from   goods g, orders o
-where  g.gno = o.gno ;
-
--- ansi 
-select odate,ono, gno , brand
-       , id, price, quantity, price*quantity as totalPrice
-from   goods 
-join   orders
-using  (gno);
+-- in  
+-- 부서 번호 10번에 근무하는 사원들과 같은 급여를 받는 사원들을 조회하세요
+select *
+from emp
+where sal in (select sal from emp where deptno = 10);
 
 
--- 이번달에 주문한 상품에 대한 정보 조회 
--- 주문일, 주문 번호, 주문한 상품 번호, 상품명, 주문자, 상품가격, 주문 수량, 주문 금액을 조회하시오.
--- vender 전용
-select odate,ono, o.gno as gno , brand
-       , id, price, quantity, price*quantity as totalPrice
-from   goods g, orders o
-where  g.gno = o.gno 
-       and date_format(odate,'%Y%m')=date_format(sysdate(),'%Y%m');
--- oracle  to_char(날짜, 포맷)       
--- where  g.gno = o.gno and year(odate)=year(sysdate()) 
---        and month(odate) = month(sysdate()) ;
-
-select date_format(sysdate(),'%Y%m') from dual;
-
--- ansi 
-select odate,ono, gno , brand
-       , id, price, quantity, price*quantity as totalPrice
-from   goods 
-join   orders
-using  (gno)
-where  date_format(odate,'%Y%m')=date_format(sysdate(),'%Y%m');
+-- 다음 관리자들이 관리하는 사원들의 모든 정보를 조회.
+-- SCOTT, CLARK 
+select *
+from emp
+where mgr in (select empno from emp where ename in ('SCOTT','CLARK'));
 
 
-select * from orders;
-
--- 사원번호, 이름, 업무, 급여, 급여등급을 조회
--- vender
-select empno, ename, job, sal, grade
-from   emp, salgrade
-where  sal between losal and hisal;
-
--- ansi
-select empno, ename, job, sal, grade
-from   emp
-join   salgrade
-on     sal between losal and hisal;
+-- 각 부서의 평균 급여들 보다 많이 받는 사원의 정보를 조회
+select *
+from emp
+where sal > all(select avg(sal) from emp group by deptno);
 
 select * from emp;
 
--- 사원번호, 이름, 업무, 급여, 급여등급, 부서번호, 부서명을 조회
--- vender
-select empno, ename, job, sal, grade
-     , e.deptno as deptno, dname
-from   emp e, salgrade, dept d
-where  sal between losal and hisal and e.deptno = d.deptno;
+-- 급여 평균 중 가장 낮은 업무의 평균 급여보다 많이 받는 사원의 정보를 추출
 
--- ansi
-select empno, ename, job, sal, grade, deptno, dname
+select avg(sal) from emp group by job;
+
+-- 각 업무별 평균 급여들 보다 낮게 받는 사원의 정보를 조회 
+ 
+/*
+ 다중 열 서브쿼리 (pairwise)
+ - 서브 쿼리를 통해 조회된 열이 두개 이상인 경우 
+ - 조회된 모든열과 일치해야 됨. 
+ 형식]  where  (컬럼, 컬럼,..) 비교 조건(select 컬럼, 컬럼,.. from ~)
+*/
+-- ADAMS 사원의 업무와 부서가 같은 사원의 정보를 조회하시오
+select *
+from emp
+where (job, deptno) = (select job, deptno from emp where ename = 'ADAMS');
+
+
+/*
+  상호 연관(correlate) sub query
+  - 외부쿼리(기본쿼리)의 컬럼을 sub query의 비교 조건으로 사용 
+  - 외부 쿼리 행의 수만큼 sub query가 수행된다.  
+*/
+
+-- 사원이 소속된 부서의 평균 급여보다 많이 받는 사원의 정보를 조회
+select *
+from emp e
+where sal > (select avg(sal) from emp e2 where e.deptno = e2.deptno);
+-- 아래도 같은 결과(from 절의 sub query로 변경)
+select *
+from emp e, (select avg(sal) as avgSal, deptno as avgdeptno from emp group by deptno) d
+where sal > avgSal and deptno = avgdeptno;
+
+select deptno, avg(sal)
+from emp
+group by deptno;
+
+
+-- 부서별 최저 임금을 받는 사원의 모든 정보를 조회 
+
+
+
+select deptno, min(sal)
 from   emp
-join   salgrade
-on     sal between losal and hisal
-join   dept
-using  (deptno);
+group by deptno;
 
-select * from member;
+/* exists 
+   - sub query에 대한 결과 집합이 발결되면 true가 되어  더 이상 쿼리를 수행하지 않고
+     결과 집합이 없으면 계속 검사하고 마지막까지 없으면 false
+*/
 
-
--- 주문번호, 주문일자, 상품명, 주문자명, 가격, 수량, 주문가격을 조회
--- vender 
-select ono, odate, brand, name, price
-      ,quantity, price*quantity
-from   orders o, goods g, member m
-where  o.gno = g.gno and o.id = m.id;
-      
--- ansi
-select ono, odate, brand, name, price
-      ,quantity, price*quantity
-from   orders 
-join   goods 
-using  (gno)
-join   member 
-using  (id);
+-- 부하직원이 있는 사원에 대한 정보 추출 
+select *
+from emp e
+where exists (select 1 from emp e2 where e.empno = e2.mgr);
 
 
--- 상품별 주문 수량을 조회하려 한다. 
--- 상품 번호(gno), 상품명(brand), 총 주문된 수량을 조회
--- vender 
-select  g.gno as gno, brand, sum(quantity) as total_quantity
-from    goods g, orders o
-where   g.gno = o.gno
-group by gno;
+-- 판매된적이 있는 상품의 정보를 조회하시오                 
+select *
+from goods g
+where exists (select 1 from orders o where g.gno = o.gno);
 
--- ansi
-select  gno, brand, sum(quantity) as total_quantity
-from    goods 
-join    orders
-using   (gno)
-group by gno;
+/*
+	not exists 
+   - sub query에 대한 결과 집합이 발결되면 fasle가 되어 더 이상 쿼리를 수행하지 않고
+     결과 집합이 없으면 계속 검사하고 마지막까지 없으면 true
+*/
+-- 한번도 판매 되지 않은 상품을 조회 
+select *
+from   goods g
+where  not exists  (select 1 from orders o where g.gno = o.gno);
 
 
 
 /*
- outer join
- -left join 
-  select [distinct]   *|컬럼명 [as alias]
-  from   테이블명 [alias] left [outer] join   테이블명 [alias]
-  on 조인 조건 | using(조인 컬럼)
-
- - right join 
-  select [distinct]   *|컬럼명 [as alias]
-  from   테이블명 [alias] right [outer] join   테이블명 [alias]
-  on 조인 조건 | using(조인 컬럼)
+ from 절의 sub query(Inline View)
+ - sub query의 수행 결과가 임시 테이블로 사용이 됨. 
 */
+-- 평균 급여보다 많이 받는 사원의 모든 정보를 조회
+ select * 
+ from emp
+ where  sal > (select avg(sal) from emp); 
 
--- inner join으로 deptno가 없는 사원은 조회되지 않음 
-select empno, ename, sal, e.deptno as deptno, dname
-from   emp e, dept d
-where  e.deptno = d.deptno;
 
--- emp테이블을 기준으로 outer join하면 deptno가 없는 사원도 조회됨. 
-select empno, ename, sal, deptno, dname
-from   emp 
-left   join dept 
-using  (deptno);
+-- 부서별 최저 급여를 받는 사원의 정보 조회 
 
-select empno, ename, sal, deptno, dname
-from   dept  
-right   join emp
-using  (deptno);
+ 
 
--- oracle 전용  조건(+)
--- left
+-- 사원이 소속된 부서의 평균 급여보다 많이 받는 사원의 정보를 조회
+-- 상호 연관으로 처리 
+select *
+from   emp e
+where  sal > (select avg(sal) 
+              from   emp  a
+              where  e.deptno = a.deptno);
+             
+
+              
+              
+-- 부서별 최저 임금을 받는 사원의 모든 정보를 조회 
+-- 상호 연관 
+select *
+from   emp e
+where  sal <= all (select sal from emp d
+                   where e.deptno = d.deptno );
+
+
+
+                   
+                   
+             
 /*
-select empno, ename, sal, e.deptno as deptno, dname
-from   emp e, dept d
-where  e.deptno = d.deptno(+);
+ N-top 
+ mysql : limit  시작숫자,개수
+         시작 숫자는 0부터 
+ 기타   : rownum
+		 시작 숫자는 1부터 
+ */
 
--- right
-select empno, ename, sal, e.deptno as deptno, dname
-from   emp e, dept d
-where  d.deptno(+) = e.deptno;
-*/
+-- 급여가 높은 사원 5명 조회 
+-- mysql 
+select *
+from emp
+order by sal desc
+limit 0, 5;
+              
+-- oralce , db, ms-sql             
+select  rownum, a.*
+from    (select empno, ename, sal
+         from   emp
+         order  by sal desc) a
+where   rownum <=5;    
 
--- goods의 모든 상품에 대해 상품번호, 이름, 가격, 분류번호, 분류명을 조회
-select gno, brand, price, cno, name
-from   goods 
-left join  category
-using  (cno);
-
-
--- 모든 상품에 대하여 상품별 주문 수량을 조회하려 한다. 
--- 상품 번호(gno), 상품명(brand), 총 주문된 수량을 조회
-select gno, brand, ifnull(sum(quantity),0) as total_quantity
-from   goods 
-left   join  orders
-using  (gno)
-group  by gno;
+-- 급여가 높은 사원 6~10위까지 
+-- mysql 
 
 
-/*
-self join 
- - 한개의 테이블로 join 
- - 테이블에 alias를 이용해서 구별한다. 
-*/
--- 사원번호, 사원이름, 업무, 급여, 상사번호, 상사이름 조회 
-select e.empno as empno
-      ,e.ename as ename
-      ,e.job   as job
-      ,e.sal   as sal
-      ,e.mgr   as mgr
-      ,m.ename as bossName
-from  emp e, emp m
-where e.mgr = m.empno;
-
--- 모든 사원에 대한 사원번호, 사원이름, 업무, 급여, 상사번호, 상사이름 조회
--- (상사가 없는 사원도 조회)
-select e.empno as empno
-      ,e.ename as ename
-      ,e.job   as job
-      ,e.sal   as sal
-      ,e.mgr   as mgr
-      ,m.ename as bossName
-from  emp e
-left  join emp m
-on    e.mgr = m.empno;
+-- oralce , db, ms-sql   
+select *          
+from  ( select  rownum ro, a.*
+		from    (select empno, ename, sal
+				 from   emp
+				 order  by sal desc) a
+	   ) 
+where   ro between 6 and 10;
 
 
 
+-- 이번달에 판매한 상품의 번호, 수량을  많이 판매한 순으로 조회 하시오
 
 
+-- 판매량이 가장 많은 상품 2개를 조회하여 상품 번호, 상품명
+-- , 가격, 총 판매된 수량, 순위를 표시하시오.
 
 
+-- 이번달에 판매량이 가장 많은 상품 2개를 조회하여 상품 번호, 상품명
+-- , 가격, 총 판매된 수량, 순위를 표시하시오.
 
+
+-- 제품의 판매 금액이 높은 상품 3개를 조회 하시오 
+
+
+-- category(분류별) 판매 수량 구하기 
+-- 분류코드(cno), 분류명(name), 판매수량, 판매 금액을
+-- 판매 수량이 높은 순으로 조회하세요      
+
+-- 상품을 기준으로 올해 판매한 상품들을 월별 Pivot테이블 형태로 조회 하시오 
 
