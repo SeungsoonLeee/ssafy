@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="board">
+	<insert id="insert" parameterType="board">
+		insert into board(no, id, title, regdate, contents)
+		values(#{no:INTEGER}
+   		        ,#{id:VARCHAR}
+   		        ,#{title:VARCHAR}
+   		        ,now()
+   		        ,#{contents:VARCHAR})
+	</insert>
+	<insert id="insertFile" parameterType="filebean">
+		insert into boardfile(rfilename, sfilename, bno)
+		values(#{rfilename:VARCHAR}
+				,#{sfilename:VARCHAR}
+				,#{bno:INTEGER})
+	</insert>
+	<update id="update" parameterType="board">
+		update board set title=#{title:VARCHAR}
+				,regdate=now()
+   		        ,contents=#{contents:VARCHAR})
+   		where no=#{no:INTEGER}
+	</update>
+	<delete id="delete" parameterType="string">
+		delete from board where no=#{no}
+	</delete>
+	<delete id="deletefile" parameterType="string">
+		delete from board where bno=#{bno}
+	</delete>
+	<select id="search" parameterType="string" resultType="board">
+		select no, title, id, contents, date_format(regdate, '%y-%m-%d') as regdate
+		from board
+		where no=#{no}
+	</select>
+	<select id="searchAll" parameterType="pagebean"	resultType="board">
+		select no, title, id, date_format(regdate, '%y-%m-%d') as regdate
+		from board
+   		<!-- 동적 쿼리시 조건에 의해 where 나 and를 붙여주는 태그  -->
+   		<where>
+   			<if test='key != null and key!="all"'>
+   				<if test="word != null">
+					<choose>
+						<when test="key == 'id'">
+							id = #{word}
+						</when>
+						<when test="key == 'title'">
+							title like concat('%',#{word},'%')   
+						</when>
+						<when test="key == 'contents'">
+							contents like concat('%',#{word},'%')
+						</when>
+					</choose>
+				</if>
+   			</if>
+   		</where>
+   		order by no desc
+   </select>
+   <select id="count"	parameterType="pagebean"	resultType="int">
+   		select count(*) as cnt from board
+   		<where>
+   			<if test='key != null and key!="all"'>
+   				<if test="word != null">
+					<choose>
+						<when test="key == 'id'">
+							id = #{word}
+						</when>
+						<when test="key == 'title'">
+							title like concat('%',#{word},'%')   
+						</when>
+						<when test="key == 'contents'">
+							contents like concat('%',#{word},'%')
+						</when>
+					</choose>
+				</if>
+   			</if>
+   		</where>
+   </select>
+   <select id="boardNo" resultType="int">
+   		select max(no) + 1 as no from board
+   </select>
+</mapper>
+
+
