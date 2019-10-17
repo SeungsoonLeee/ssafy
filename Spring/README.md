@@ -9,9 +9,14 @@
 
 ### 1.2. BeanFactory 인터페이스  
 - 정의 : 빈 객체를 관리하고 각 빈 객체간의 의존관계를 설정해주는 기능을 제공  
-- XmlBeanFactory 클래스
-	- 테스트
- 
+- XmlBeanFactory 클래스  
+	- BeanFactory 인터페이스 구현 클래스  
+	- 외부 자원으로부터 설정 정보를 읽어와 빈 객체를 생성  
+	- Resource를 이용하여 XmlBeanFactory에 설정 정보를 전달  
+
+### 1.3. ApplicationContext 인터페이스  
+
+
 ### Factory Pattern  
 
 ```java
