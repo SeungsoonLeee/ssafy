@@ -15,7 +15,14 @@
 	- Resource를 이용하여 XmlBeanFactory에 설정 정보를 전달  
 
 ### 1.3. ApplicationContext 인터페이스  
+- 정의 : BeanFactory가 제공하는 빈 관리 기능 이외에 파일과 같은 자원 처리, 추상화, 메시지 지원 및 국제화 지원, 이벤트 지원 등의 기능을 제공  
 
+### 1.3. WebApplicationContext 인터페이스  
+- 웹 어플리케이션을 위한 ApplicationContext  
+- 웹 어플리케이션을 취해 추가적으로 제공되는 빈 영역을 정의  
+- 하나의 웹 어플리케이션마다 한 개의 WebApplicationContext가 존재  
+- XmlWebApplicationContext 클리스  
+	- 웹 으폴리케이션에 위치한 XML 파일로부터 설정 정보를 로딩  
 
 ### Factory Pattern  
 
