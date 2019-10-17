@@ -3,7 +3,7 @@ package com.ssafy.step1.combination;
 import java.util.Arrays;
 import java.util.Scanner;
 
-public class CombinationTest2 {
+public class CombinationByNextPermutation {
 	static int n, r;
 	static int[] nums;
 	static int[] temp;

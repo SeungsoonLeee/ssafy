@@ -3,7 +3,7 @@ package com.ssafy.step1.permutation;
 import java.util.Arrays;
 import java.util.Scanner;
 
-public class PermutationTest7_swap2 {
+public class NextPermutation {
 	static int n;
 	static int[] num;
 
