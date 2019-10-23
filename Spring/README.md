@@ -43,3 +43,92 @@ public class XXXServiceImp{
 의존 : 클래스 내에 있는 함수나 속성이 아닌 다른 클래스의 함수나 속성을 사용  
 -> 상속, 속성, 인자로 다른 클래스를 사용  
 
+
+## 2. AOP (Aspect Oriented Program)  
+
+### 2.1. execution 명시자    
+Advice를 적용할 메서드 지정
+
+```java  
+execution([수식어] [리턴타입] [클래스이름] [이름]([파라미터])
+```
+
+**기본 형식**  
+- "*" 는 모든 값을 의미  
+- ".." 는 0개 이상 의미  
+
+**수식어**  
+- 생략가능  
+- public, protected 등등  
+
+**리턴타입**  
+- 메서드의 리턴타입 지정  
+
+**클래스이름, 이름**  
+- 클래스의 이름 및 메서드의 이름 지정  
+
+**파라미터**
+- 메서드 파라미터 지정  
+
+
+
+**ex1**  
+
+```java
+execution(* some.package.*.*())
+```
+
+- some.package 패키지 내  
+- 파라미터가 없는 모든 메서드 호출  
+
+
+**ex2**
+
+```java
+execution(* some.package..*.*(..))
+```
+
+- some.package 패키지와 하위 패키지에 있는  
+- 파라미터가 0개 이상인 모든 메서드 호출  
+
+
+**ex3**
+
+```java
+execution(String some.package.SomeService.someMethod(..))
+```
+
+- 리턴 타입이 String,  
+- some.package.SomeService 인터페이스 내  
+- 파라미터가 0개 이상인 someMethod 메서드 호출  
+
+
+**ex4**
+
+```java
+execution(* some*(*))
+```
+
+- 메서드 이름이 some으로 시작되고,  
+- 파라미터가 1개인 메서드 호출  
+
+
+**ex5**
+
+```java
+execution(* some*(*, *))
+```
+
+- 메서드 이름이 some으로 시작되고,  
+- 파라미터가 2개인 메서드 호출  
+
+
+**ex6**
+
+```java
+execution(* some*(String, ..))
+```
+
+- 메서드 이름이 some으로 시작되고,  
+- 첫번째 파라미터 타입이 String,  
+- 파라미터가 1개 이상인 메서드 호출  
