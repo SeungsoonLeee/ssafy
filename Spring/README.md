@@ -133,13 +133,14 @@ execution(* some*(String, ..))
 - 첫번째 파라미터 타입이 String,  
 - 파라미터가 1개 이상인 메서드 호출  
 
-
 ### 2.2. Advisor  
 공통코드/공통모듈(Aspect)를 수행할 시점
 
 ||첫번째 인자|두번째 인자|리턴값|
+|---|--------|--------|----|
 |Before|Join Point|X|X|
 |After|Join Point|X|X|
 |AfterReturning|Join Point|Object|X|
 |AgterThrowing|Join Point|Throwable|X|
 |Around|Proceeding Join Point|X|Object|
+
