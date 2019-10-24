@@ -144,3 +144,26 @@ execution(* some*(String, ..))
 |AgterThrowing|Join Point|Throwable|X|
 |Around|Proceeding Join Point|X|Object|
 
+
+## 기타  
+
+### Srping Project 작성 순서  
+1. web.xml 설정  
+	- contextConfigLocation 경로 설정 및 파악  
+	- encoding Filter 설정  
+2. contextConfigLocation 설정  
+	- mvc-config.xml  
+		- controller scan  
+		- resolver  
+	- application-config.xml  
+		- dao  
+		- service scan  
+		- Database  
+		- myBatis  
+3. myBatis 환경 설정  
+	- Alias 설정  
+	- query xml 경로 설정  
+4. query xml 작성  
+5. dao, service, controller 작성  
+6. view 작성  
+
