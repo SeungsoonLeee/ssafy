@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+	<!-- 
+		1. 기본 생성자로 객체를 생성하고 setter 메서드를 이용하여 bean 등록
+		2. <bean> 태그의 바디에 <property>를 통해 setter 메서드 호출
+			<bean>
+				<property />
+			</bean>
+		3. <property> 속성
+			nave : 속성명
+			value : primitive type과 String 타입의 값을 설정
+			ref : 이미 등록된 bean의 id -> 의존하는 객체를 사용
+	-->
+	
+	<bean id='title' class="java.lang.String">
+		<constructor-arg value="처음하는 spring" />
+	</bean>
+	
+	<bean id="board" class="com.ssafy.model.dto.Board">
+		<property name="id" value="ssafy"/>
+		<property name="title" ref="title"/>
+	</bean>
+
+	<bean id="file1" class="com.ssafy.model.dto.FileBean">
+		<constructor-arg value="a.txt"/>
+		<constructor-arg value="a.txt"/>
+		<constructor-arg value="1"/>
+	</bean>
+	<bean id="file2" class="com.ssafy.model.dto.FileBean">
+		<constructor-arg value="a.txt"/>
+		<constructor-arg value="a.txt"/>
+		<constructor-arg value="1"/>
+	</bean>
+	<bean id="board2" class="com.ssafy.model.dto.Board">
+		<property name="no" value="1"/>
+		<property name="id" value="ssafy"/>
+		<property name="title" ref="title"/>
+		<property name="regdate" value="2019-10-17"/>
+		<property name="contents" value="spring 예제"/>
+		<property name="files" >
+			<list>
+				<ref bean="file1"/>
+				<ref bean="file2"/>
+			</list>
+		</property>
+	</bean>
+	
+</beans>

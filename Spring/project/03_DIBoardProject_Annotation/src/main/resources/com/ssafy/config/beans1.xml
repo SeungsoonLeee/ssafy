@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-3.2.xsd">
+
+	<!-- 
+		base-package에 설정된 package를 검사해서 Annotation으로 설정된 bean들을 Container에 등록
+		
+		@Component
+		 - bean으로 등록
+		 - 클래스 위에 작성
+		 - 첫 글자를 소문자로 한 클래스명으로 빈을 등록함
+		
+		@Component("beanId")
+		 - 지정한 이름으로 빈 등록
+		 
+		 	@Repository : Dao를 표현하는 Bean 등록
+		 	@Service : service를 표현하는 Bean 등록
+		 	@Controller : controller를 표현하는 Bean 등록
+		
+		@Autowire
+		 - 의존하고 있는 객체를 자동으로 주입 받음
+		 - 속성, 생성자, setter 메서드 위에 사용
+			
+		@Qualified("beanId")
+		 - 이름에 해당하는 bean객체를 @Autowire를 통해 주입 받음
+		 - @Autowire와 항상 함께 쓰임
+	-->
+	
+	<context:component-scan base-package="com.ssafy.model.dao"></context:component-scan>
+	<context:component-scan base-package="com.ssafy.service"></context:component-scan>
+	
+	
+</beans>

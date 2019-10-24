@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+	<!-- 
+		1. 기본 새성자로 객체를 생성하도록 bean 등록(dto를 만들 때 기본 생성자를 반드시 만들어 주어야 한다.)
+			id : bean을 구별하는 식별자, 유일한 이름으로 사용
+			name : bean을 구별하는 식별자, 공백으로 구별하여 여러개의 이름 설정 가능
+			class : 컨테이너가 생성할 객체의 클래스로 패키지를 포함한 클래스명을 씀
+			scope : 객체의 사용 범위 지정
+				- singleton : 한번 생성된 객체를 getBean()할 때마다 전달
+				 -> container가 종료될 때까지 같은 객체를 공유해서 사용
+				- prototype : getBean()할 때마다 생성하여 전달
+				 -> 같은 객체르 공유하지 않고 항상 새로 생성하여 사용
+				- request : Web에서 새로운 요청으로 getBean()할 떄마다 객체를 생성
+				- session : Web에서 새로운 session으로 getBean()할 때마다 객체를 생성
+				 -> 같은 session에서는 공유됨
+				 
+			lazy-init : scope가 singleton인 경우 lazy-init의 속성에 따라 객체 생성 시점을 결정할 수 있다.
+				- false : Container가 생성될 때 객체 생성. 즉, 첫 로딩 때 객체 생성
+				- true : 처음 GetBean()할 때 객체 생성
+			
+			init-method : 객체 생성 후 호출될 메서드를 지정
+			destroy-method : 객체가 소멸되기 전 호출될 메서드 지정(컨테이너가 종료될 때 호출될 메서드 지정)
+	 --> 
+	<bean id='board' class="com.ssafy.model.dto.Board" />
+	<bean id='board2' class="com.ssafy.model.dto.Board" scope="prototype"/>
+
+</beans>

@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd"
+	default-autowire="byType"
+	>
+	<!-- 
+		default-autowire="default" : 직접 주입하지 않거나, autowire를 설정하지 않은 경우 기본적인 autowire를 설정
+	 -->
+	<bean id="boardDao" name="dao" class="com.ssafy.model.dao.BoardDaoImpl"></bean>
+	<bean id="boardDao2" class="com.ssafy.model.dao.BoardDaoImpl"></bean>
+	<bean id="memberDao" class="com.ssafy.model.dao.MemberDAOImp"></bean>
+
+	<!-- boardDaoImpl가 2개 이상 설정되어 있기 때문에 name으로 설정한 객체가 들어갈 수 있도록 'byName'으로 autowire함 -->
+	<bean id="boardService" class="com.ssafy.service.BoardServiceImpl" autowire="byName"/>
+
+	<bean id="memberService" class="com.ssafy.service.MemberServiceImp" />
+
+</beans>

@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:p="http://www.springframework.org/schema/p"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+	<!-- 
+		1. 기본 생성자로 객체를 생성하고 setter 메서드를 이용하여 데이터 주입
+		2. p namespace를 통해 주입
+			 namespaces 탭에서 p를 체크
+		3. 사용 방법
+			 <bean p:속성명="primitive 또는 String 값"
+			 	   p:속성명-ref="이미 등록된 bean id" />
+		4. 집합체에 데이터를 넣어서 주입할 수는 없음에 주의
+			
+	-->
+	<bean id='title' class="java.lang.String">
+		<constructor-arg value="처음하는 spring" />
+	</bean>
+	
+	<bean id = "board" class="com.ssafy.model.dto.Board"
+		p:no="1"	
+		p:id="ssfay"
+		p:title-ref="title"
+	/>
+	
+</beans>
