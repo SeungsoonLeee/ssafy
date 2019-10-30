@@ -145,6 +145,10 @@ execution(* some*(String, ..))
 |Around|Proceeding Join Point|X|Object|
 
 
+## 3. REST(REpresentation State Transfer)  
+![restImg](rest.PNG)  
+
+
 ## 기타  
 
 ### Srping Project 작성 순서  
