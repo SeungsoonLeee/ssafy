@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	default-autowire="byType"
+	xmlns:aop="http://www.springframework.org/schema/aop"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+		http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-3.2.xsd">
+	
+	<bean id="boardDao" name="dao" class="com.ssafy.model.dao.BoardDaoImpl"></bean>
+	<bean id="memberDao" class="com.ssafy.model.dao.MemberDAOImp"></bean>
+
+	<bean id="boardService"  class="com.ssafy.service.BoardServiceImpl"  />
+	<bean id="memberService" class="com.ssafy.service.MemberServiceImp" />
+
+
+	<!-- AOP 
+			1. AOP namespace 추가
+			2. aspect class를 bean으로 등록
+			3. AOP 설정
+				<aop:config>
+					. . .
+				</aop:config>
+	-->
+	
+	<bean id="helloAOP" class="com.ssafy.aop.HelloAOP" />
+	<aop:config>
+		<!-- Aspect(공통코드)를 적용할 point cut 설정 
+				<aop:pointcut> : 여러 Aspect나 여러 <aop:config>에서 재사용 가능
+		-->
+		<aop:pointcut expression="execution( * com.ssafy.service.*ServiceImp*.search*(..))" id="searchPC" />
+		
+		<!-- Aspect 설정
+				bean으로 등록한 aspect를 참조시킴
+		 -->
+		<aop:aspect ref="helloAOP">
+			<!-- <aop:어드바이저 태그>
+					method : 공통 모듈을 작성한 메서드 이름
+					pointcut : 공통 모듈을 적용할 pointcut으로 재사용 안됨
+					pointcut-ref : 미리 등록한 pointcut id
+			 -->
+			<aop:before method="hello" pointcut-ref="searchPC" />
+		</aop:aspect>
+	</aop:config>
+	
+</beans>

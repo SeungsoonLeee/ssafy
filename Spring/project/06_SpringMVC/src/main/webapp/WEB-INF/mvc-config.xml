@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<beans xmlns="http://www.springframework.org/schema/beans" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:mvc="http://www.springframework.org/schema/mvc" xmlns:context="http://www.springframework.org/schema/context"
+	xsi:schemaLocation="http://www.springframework.org/schema/mvc http://www.springframework.org/schema/mvc/spring-mvc.xsd
+		http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd">
+
+    <!-- Uncomment and your base-package here: 
+    		controller를 위한 scan 설정
+    -->
+	<context:component-scan base-package="com.ssafy.controller"/>
+
+	<!-- web을 위한 annotation이 처리될 수 있도록 설정 -->
+    <mvc:annotation-driven />
+
+
+	<!--
+		viewResolver를 설정하지 않으면 기본적으로 DefaultUrlBasedResolver가 동작
+		-url에 해당하는 view를 찾아 서비스함
+			
+		InternalResourceViewResolver는 DefaultUrlBasedResolver를 상속받음
+		- url에 해당하는 view를 찾아 서비스
+		- 서버 내부에 있는 어떤 자원도 찾아서 서비스(/WEB-INF/ 하위에 있는 자원까지도 서비스)
+		- 전달된 url 앞에 prefix로 지정한 값을 추가
+		- 전달된 url 뒤에 suffix로 지정한 값을 추가
+		
+	 -->
+
+	<!-- <bean class="org.springframework.web.servlet.view.InternalResourceViewResolver">
+	        Example: a logical view name of 'showMessage' is mapped to '/WEB-INF/jsp/showMessage.jsp'
+	        <property name="prefix" value="/WEB-INF/view/"/>
+	        <property name="suffix" value=".jsp"/>
+	</bean> -->
+
+</beans>
