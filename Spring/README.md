@@ -146,7 +146,7 @@ execution(* some*(String, ..))
 
 
 ## 3. REST(REpresentation State Transfer)  
-![restImg](rest.PNG)  
+![restfulImg](./RestFul.jpg)  
 
 
 ## 기타  
