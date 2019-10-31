@@ -145,9 +145,12 @@ execution(* some*(String, ..))
 |Around|Proceeding Join Point|X|Object|
 
 
-## 3. REST(REpresentation State Transfer)  
+## 3. REST(REpresentation State Transfer)
+
+### 3.1. RestFul  
 ![restfulImg](./RestFul.jpg)  
 
+### 3.2. Swagger  
 
 ## 기타  
 
