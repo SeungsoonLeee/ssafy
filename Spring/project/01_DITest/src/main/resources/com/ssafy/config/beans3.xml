@@ -10,7 +10,7 @@
 				<property />
 			</bean>
 		3. <property> 속성
-			nave : 속성명
+			name : 속성명
 			value : primitive type과 String 타입의 값을 설정
 			ref : 이미 등록된 bean의 id -> 의존하는 객체를 사용
 	-->
