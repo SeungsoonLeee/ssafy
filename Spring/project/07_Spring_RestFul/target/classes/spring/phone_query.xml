@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+	"http://mybatis.org/dtd/mybatis-3-mapper.dtd"> 
+	
+<mapper namespace="sql.pms">
+
+	<insert id="insert"			parameterType="phone">
+		insert into phones(num, model, price, vcode)
+		values( #{num},#{model},#{price},#{vcode} )
+	</insert>
+	
+	<update id="update"			parameterType="phone">
+		update phones set model = #{model}
+							,price = #{price}
+							,vcode = #{vcode}
+		where nums = #{num}
+	</update>
+	
+	<select id="search" parameterType="string" resultType="phone">
+		select num, model, price, vendor as vcode
+		from company c, phones p
+		where c.vcode = p.vcode and num = #{num}
+		
+		<!--
+		select num, model, price, vendor as vcode
+		from phones
+		join company
+		using (vcode)
+		where num = #{num}
+		-->
+	</select>
+	
+	
+	<select id="searchAll" resultType="phone">
+		select num, model, price, vendor as vcode
+		from company c, phones p
+		where c.vcode = p.vcode
+	</select>
+	
+	<delete id="delete" parameterType="string">
+		delete from phones
+		where num = #{num};
+	</delete>
+	
+	<delete id="delete2" parameterType="list">
+		delete from phones
+		where num in
+		<foreach collection="list" item="num" open="(" separator="," close=")">
+			#{num}
+		</foreach>
+	</delete>
+	
+	<select id="searchMember" parameterType="string" resultType="member">
+		select *
+		from userinfo
+		where id = #{id};
+	</select>
+	
+</mapper>
+
+
+
+
+
+
