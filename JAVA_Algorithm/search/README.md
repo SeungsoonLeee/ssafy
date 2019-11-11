@@ -12,14 +12,14 @@
 노드의 데이터 값이 왼쪽 자식 노드 < 부모 노드 < 오른쪽 자식 노드 로 저장하여 특정 수를 찾는 탐색 알고리즘  
 1) 루트에서 시작  
 2) 탐색할 값과 루트값을 비교  
-3) 탐색할 값이 루트값보다 작은 경우 왼쪽 자식노드를, 큰 경우 오른쪽 자시노드를 탐색
+3) 탐색할 값이 루트값보다 작은 경우 왼쪽 자식노드를, 큰 경우 오른쪽 자식노드를 탐색
 4) 2, 3을 반복  
 
 **2진 탐색 트리를 위해서는 삽입 위치를 규칙에 맞게 저장하는 알고리즘이 필요하다**  
 
 ![BinarySearchTreeInsertionAlgorithmIMG](./BinarySearchTreeInsertionAlgorithm.PNG)
 
-**코드**  
+**<코드>**  
 
 ```java
 public class BinarySearch {
