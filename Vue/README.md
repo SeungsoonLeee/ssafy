@@ -3,11 +3,15 @@
 ## 1. Vue  
 
 ### 1.1. Vue 폴더 구조  
->Project
->> public
->>> index.html
->> src
->>> component
->>> xxx.vue
->> App.vue
->> Main.js
+>[Project]  
+>> [node_modules]  
+>> [public]  
+>>> index.html  
+
+>> [src]  
+>>> component  
+>>> xxx.vue  
+
+>> App.vue  
+>> Main.js  
+
