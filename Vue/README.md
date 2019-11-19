@@ -46,3 +46,12 @@ VueX는 store라는 저장소 개념을 사용하는 상태 저장 컨테이너.
 - Mutations : 시간이 많이 소요되지 않고 동기적 작업의 메서드들 구현, mytate를 통해  State 호출  
 - State : Mutations로 하여금 state.status가 인증되어 상태를 변경  
 
+## 3. Vue Router  
+컴포넌트(각각의 vue)를 navigation 가능하게 만들어줌.  
+즉, 페이지를 전환하는 개념.  
+
+### 3.1. 링크를 통한 컴포넌트 전환(정적이 강함)  
+router-link 태그 사용  
+
+### 3.2. 코드를 통한 컴포넌트 전환(도적이 강함)  
+router의 push() 메서드 사용  
