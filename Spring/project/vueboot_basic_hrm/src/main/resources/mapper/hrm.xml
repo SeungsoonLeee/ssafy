@@ -1,0 +1,128 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.ssafy.edu.vue.dao.HrmMapper">
+	<resultMap type="EmployeeDto" id="EmployeeResultMap">
+		<id column="eid" property="id"/>
+		<result column="ename" property="name"/>
+		<result column="did" property="dept_id"/>
+	</resultMap>
+	<select id="findAllEmployees" resultMap="EmployeeResultMap">
+		select id eid ,name ename , dept_id did
+		from s_emp order by id
+	</select>
+<!-- 	<select id="findAllEmployees" resultType="EmployeeDto">
+		select id, name, mailid, start_date, manager_id, title, dept_id ,
+		ifnull(salary,0.0) salary, ifnull(commission_pct,0.0) commission_pct
+		from s_emp order by id
+	</select> -->
+	<select id="findEmployeeById" parameterType="java.lang.Integer"
+		resultType="EmployeeDto">
+		select id, name, mailid, start_date, manager_id, title, dept_id ,
+		ifnull(salary,0.0) salary, ifnull(commission_pct,0.0) commission_pct
+		from s_emp where id= #{id}
+	</select>
+	<select id="findAllTitles" resultType="EmployeeDto">
+		select distinct title from s_emp
+	</select>
+	<select id="getEmployeesTotal" resultType="java.lang.Integer">
+		SELECT COUNT(*) FROM s_emp
+	</select>
+	<select id="findLikeEmployees" parameterType="java.lang.String"
+		resultType="EmployeeDto">
+		select id, name, mailid, start_date, manager_id, title, dept_id ,
+		ifnull(salary,0.0) salary, ifnull(commission_pct,0.0) commission_pct
+		from s_emp where name like concat('%',#{name},'%')
+	</select>
+	<insert id="addEmployee" parameterType="EmployeeDto" useGeneratedKeys="true" keyProperty="id">
+		INSERT INTO s_emp
+		(name, mailid, start_date, manager_id, title, dept_id, SALARY,
+		COMMISSION_PCT)
+		VALUES(
+		#{name},#{mailid},#{start_date},
+		<if
+			test="manager_id != '' and manager_id != null and  manager_id != 0 ">
+			#{manager_id}
+		</if>
+		<if
+			test="manager_id == '' or manager_id == null or manager_id == 0 ">
+			null
+		</if>
+		,#{title},#{dept_id},#{salary},
+		<if
+			test="commission_pct != '' and commission_pct != null and  commission_pct != 0 ">
+			#{commission_pct}
+		</if>
+		<if
+			test="commission_pct == '' or commission_pct == null or commission_pct == 0 ">
+			null
+		</if>
+		)
+	</insert>
+	<update id="updateEmployee" parameterType="EmployeeDto">
+		UPDATE s_emp SET
+		name=#{name}, mailid=#{mailid} , start_date= #{start_date},
+		manager_id=#{manager_id}, title=#{title},
+		dept_id=#{dept_id},salary=#{salary}
+		<if
+			test="commission_pct != '' and commission_pct != null and  commission_pct != 0 ">
+			,commission_pct=#{commission_pct}
+		</if>
+		<if
+			test="commission_pct == '' or commission_pct == null or commission_pct == 0 ">
+			,commission_pct=null
+		</if>
+		WHERE id=#{id}
+	</update>
+	<delete id="deleteEmployee" parameterType="java.lang.Integer">
+		DELETE FROM s_emp WHERE id=#{id}
+	</delete>
+	<select id="findAllDepartments" resultType="DepartmentDto">
+		select dept_id, name, region_id from s_dept
+	</select>
+
+	<resultMap type="DepartmentDto" id="DeptResultMap">
+		<id column="dept_id" property="dept_id"/>
+		<result column="name" property="name"/>
+		<result column="region_id" property="region_id"/>
+		<collection property="employees" resultMap="EmployeeResultMap"/>
+	</resultMap>
+	
+	<select id="selectDeptByIdWithEmployees" parameterType="int" 
+			resultMap="DeptResultMap">
+		select d.dept_id,d.name, d.region_id, e.id eid, e.name ename
+		from	s_dept d left outer join s_emp e
+		on (d.dept_id = e.dept_id)
+		where d.dept_id = #{id}
+	</select>
+
+
+	<resultMap type="EmployeeDto" id="EmployeeBasicResultType">
+		<id column="eid" property="id"/>
+		<result column="ename" property="name"/>
+		<result column="esalary" property="salary"/>
+	</resultMap>
+	<resultMap type="EmployeeDto" id="EmployeeMasterResultType">
+		 <id column="id" property="id" />
+ 		 <result column="name" property="name" />
+		 <result column="mailid" property="mailid" />
+		 <result column="start_date" property="start_date" />
+		 <result column="manager_id" property="manager_id" />
+		 <result column="title" property="title" />
+		 <result column="dept_id" property="dept_id" />
+		 <result column="salary" property="salary" />
+		 <result column="commission_pct" property="commission_pct" />
+		 <association property="master" resultMap="EmployeeBasicResultType" />
+	</resultMap>
+	<select id="selectEmployeeWithMaster" resultMap="EmployeeMasterResultType" parameterType="int">
+		SELECT	e.id, e.name, e.mailid, e.start_date, e.manager_id, e.title, e.dept_id ,
+				ifnull(e.salary,0.0) salary, ifnull(e.commission_pct,0.0) commission_pct,
+				m.id eid,m.name ename ,m.salary esalary
+		FROM	S_EMP E LEFT OUTER JOIN S_EMP M 
+		ON 		(E.MANAGER_ID = M.ID)
+		WHERE	E.ID = #{id}
+	</select>
+
+
+</mapper>

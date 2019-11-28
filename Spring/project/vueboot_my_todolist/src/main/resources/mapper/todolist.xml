@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.jurib.todolist.dao.TodoMapper">
+	<insert id="insertTodo" parameterType="Todo" useGeneratedKeys="true" keyProperty="no">
+		insert into todolist(content,userid,write_date,end_date,done)
+		values(#{content},#{userId},now(),#{endDate},'N')
+	</insert>
+	<update id="updateTodo" parameterType="Todo">
+		update 	todolist 
+		set 	content = #{content},
+				end_date = #{endDate}
+		where 	no = #{no}
+	</update>
+	<delete id="deleteTodo" parameterType="int">
+		delete 	from todolist
+		where 	no = #{no}
+	</delete>
+	<select id="selectTodo" parameterType="int" resultType="Todo">
+		select 	no,content,userid as userId, DATE_FORMAT(write_date, '%Y-%m-%d %H:%i:%s') as writeDate, end_date as endDate, done
+		from	todolist
+		where	no = #{no}
+	</select>
+	<select id="selectTodoList" parameterType="string" resultType="Todo">
+		select 	no,content,userid as userId, DATE_FORMAT(write_date, '%Y-%m-%d %H:%i:%s') as writeDate, end_date as endDate, done
+		from	todolist
+		where	userid = #{userId}
+	</select>
+	
+	<delete id="deleteTodoList" parameterType="string">
+		delete 	from todolist
+		where 	userid = #{userId}
+	</delete>
+	<update id="updateTodoDone" parameterType="int">
+		update 	todolist 
+		set 	done = 'Y'
+		where 	no = #{no}
+	</update>	
+</mapper>

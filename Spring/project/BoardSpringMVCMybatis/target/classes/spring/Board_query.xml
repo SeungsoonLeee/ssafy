@@ -1,0 +1,119 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+	"http://mybatis.org/dtd/mybatis-3-mapper.dtd"> 
+	
+<mapper namespace="com.ssafy.model.dao.BoardDao">
+	<select id="getBoardNo"   	resultType="int" >
+		select max(no)+1 from board
+	</select>
+	<!-- result Map
+		1. 컬럼명과 객체의 속성명이 다를때 매핑시키기 위해 
+		2. join할 정보를 객체에 매핑시키기 위해 
+	 -->
+	<resultMap type="boardfile" id="fileMap">
+		<!-- primary key는 id 태그를 이용해서 매핑 -->
+		<id 		column="fileno"			property="no"/>
+		
+		<!-- 일반 컬럼은 result 태그를 이용해서 매핑 -->
+		<result		column="rfilename"	property="rfilename"/>
+		<result		column="sfilename"	property="sfilename"/>
+		<result		column="bno"		property="bno"/>
+	</resultMap>
+	
+	<resultMap type="board" 	id="boardMap">
+		<id			column="no"			property="no"/>
+		<result		column="id"			property="id"/>	
+		<result		column="title"		property="title"/>	
+		<result		column="regdate"	property="regdate"/>	
+		<result		column="contents"	property="contents"/>	
+		<!-- join 매핑
+		     1:1   association  태그로 매핑
+		     1:N   collection	태그로 매핑
+		     
+			 property="객체에 선언된 속성이름"	
+			 ofType="N의 타입 or 알리아스"	
+			 resultMap="N의 resultMap으로 설정한 id"     
+		 -->
+		<collection property="files"	ofType="boardfile"	resultMap="fileMap" />
+	</resultMap>
+	<select id="search"			parameterType="string" 			resultMap="boardMap">
+		 select a.* , rfilename, sfilename, f.no as fileno               
+		 from   boardfile f                                              
+		 right join  (select no, id, title, contents                     
+		 					, date_format(regdate, '%y-%m-%d') as regdate
+		 			 from   board                                        
+		 			 where  no = #{no}) a                                   
+		 on   a.no = bno                                                 
+	</select>
+	
+	<select id="searchAll"		parameterType="pagebean"	resultType="board">
+		select no, id, title
+			  , date_format(regdate, '%Y-%m-%d') as regdate 
+		from board
+		<where>
+			<if test=" word != null">
+				<choose>
+					<when test=" key == 'id' ">
+						id = #{word}
+					</when>
+					<when test=" key == 'title' ">
+						title like concat('%',#{word},'%')
+					</when>
+					<when test=" key == 'contents' ">
+						contents like concat('%',#{word},'%')
+					</when>
+				</choose>
+			</if>
+		</where>
+		order by no desc limit #{start} , #{interval}
+	</select>
+	<select id="count"			parameterType="pagebean"	resultType="int">
+		select count(*) as cnt from board
+		<where>
+			<if test=" word != null">
+				<choose>
+					<when test=" key == 'id' ">
+						id = #{word}
+					</when>
+					<when test=" key == 'title' ">
+						title like concat('%',#{word},'%')
+					</when>
+					<when test=" key == 'contents' ">
+						contents like concat('%',#{word},'%')
+					</when>
+				</choose>
+			</if>
+		</where>
+	</select>
+	
+	<insert id="insert"			parameterType="board">
+		insert into board(no, id, title, contents)
+		values( #{no},#{id},#{title},#{contents} )
+	</insert>
+	
+	<insert id="insertfile"		parameterType="boardfile">
+		insert into boardfile(rfilename, sfilename, bno)
+		values( #{rfilename},#{sfilename}, #{bno} )
+	</insert>
+	
+	<update id="update" 		parameterType="board">
+		update board set regdate=now(), title=#{title}
+						 , contents=#{contents}
+		where no = #{no}				 
+	</update>
+	
+	<delete id="delete"			parameterType="string">
+		delete from board where no = #{no}
+	</delete>
+	<delete id="deletefile"		parameterType="int">
+		delete from boardfile where bno = #{bno}
+	</delete>
+	
+</mapper>
+
+
+
+
+
+

@@ -1,0 +1,4 @@
+@CHARSET "EUC-KR";
+.top {position: absolute;  top: 50px;  right:30px; }
+.main{position: absolute;  top: 100px; width: 100%; }
+.bottom{position: absolute;  top: 400px; width: 100%; }

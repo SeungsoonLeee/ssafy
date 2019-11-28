@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+	"http://mybatis.org/dtd/mybatis-3-mapper.dtd"> 
+	
+<mapper namespace="sql.faq">
+
+	<insert id="insert" parameterType="faq">
+		insert into faq(id, title, contents, regdate)
+		values(
+				#{id:VARCHAR}
+				,#{title:VARCHAR}
+				,#{contents:VARCHAR}
+				,now()
+		)
+	</insert>
+	
+	<update id="update" parameterType="faq">
+		update faq set title = #{title:VARCHAR}
+						,contents = #{contents:VARCHAR}
+						,regdate = now()
+		where no = #{no:INTEGER}
+	</update>
+	
+	<update id="reply" parameterType="faq">
+		update faq set reply = #{reply:VARCHAR}
+		where no = #{no:INTEGER}
+	</update>
+	
+	
+	<delete id="delete" parameterType="string">
+		delete from faq where no = #{no}
+	</delete>
+	
+	<select id="search" parameterType="string" resultType="faq">
+		select no, id, title, contents, date_format(regdate, '%y-%d-%d') as regdate, reply
+		from faq
+		where no = #{no}
+	</select>
+	
+	<select id="searchAll" resultType="faq">
+		select no, id, title, contents, date_format(regdate, '%y-%d-%d') as regdate, reply
+		from faq
+	</select>
+	
+	
+</mapper>
+
+
+
+
+
+
