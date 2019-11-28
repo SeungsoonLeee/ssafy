@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <title>Insert title here</title>
+    <script type="text/javascript" src="http://unpkg.com/vue"></script>
+  </head>
+  <body>
+    <div id="first">
+      <div v-text="title"></div>
+      <!-- v-if : 조건이 false면 body 내용이 주석 처리 -->
+      <div v-if="hasResult"><h2>{{title}}</h2></div>
+      <!-- v-show : 조건이 false면 display 속성이 none 처리 -->
+      <div v-show="hasResult"><h2>{{title}}</h2></div>
+    </div>
+    <script type="text/javascript">
+      var model = { title: "SSAFY", id: "Vue" };
+      var first = new Vue({
+        el: "#first",
+        data: model,
+        computed: {
+          hasResult: function() {
+            return this.title.length > 10;
+          }
+        }
+      });
+    </script>
+  </body>
+</html>

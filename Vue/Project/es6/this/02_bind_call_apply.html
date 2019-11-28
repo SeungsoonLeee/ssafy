@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Document</title>
+
+    <script>
+      console.log(this); // this -> 전역객체
+      function test(){
+          console.log('test');
+          console.log(this);
+      }
+
+      test(); // this -> 전역객체
+
+      let p1 = {age : 25};
+      let p2 = {gender : 'M'};
+
+      console.log('----------------------call------------------------');
+      // 함수에 매개변수가 있으면 나열식으로 넘겨줌
+      //  ex) call(p1, 1, 2)
+      test.call();
+      test.call(p1);
+      test.call(p2);
+
+      console.log('----------------------apply------------------------');
+      // 함수에 매개변수가 있으면 배열로 넘겨줌
+      //  ex) apply(p1, [1, 2])
+      test.apply();
+      test.apply(p1);
+      test.apply(p2);
+
+      console.log('----------------------bind------------------------');
+      test.bind(p1).call();
+      const test2 = test.bind(p2);
+      test2(); // bind했기 때문에 this가 window로 나오지 않음
+      test2.call();
+      test2.call(p1); //call(p1)을 해도 bind 했기 때문에 바뀌지 않음.
+
+    </script>
+  </head>
+  <body></body>
+</html>

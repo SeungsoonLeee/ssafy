@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Document</title>
+    <script src="http://unpkg.com/vue"></script>
+  </head>
+  <body>
+    <div id="first">
+      <svg width="200" height="200">
+        <my-svg ccx="50" ccy="50" cr="40" color="purple"></my-svg>
+        <my-svg ccx="150" ccy="50" cr="20" color="green"></my-svg>
+      </svg>
+    </div>
+
+    <script>
+      var app = new Vue({
+        el: "#first",
+        components: {
+          "my-svg": {
+            // props: component의 속성을 통해 data 전달
+            props: ["ccx", "ccy", "cr", "color"],
+            // templete: component에 의해 표시될 UI
+            // props를 통해 외부 데이터를 전달 받기 위해 ":"를 사용 -> ex):속성명='props 속성명'
+            template:
+              "<circle :cx='ccx' :cy='ccy' :r='cr' :fill='color' stroke='green' stroke-width='2' />"
+          }
+        }
+      });
+    </script>
+  </body>
+</html>

@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Document</title>
+    <script src="http://unpkg.com/vue"></script>
+  </head>
+  <body>
+    <div id="first">
+      <div>{{title}}</div>
+      <div>{{title|toH3}}</div>
+      <div>{{title|toH3|uppper}}</div>
+      <div v-on:click="showMyName">클릭</div>
+      <div v-on:click="removeVue">Vue 객체 삭제 클릭</div>
+    </div>
+    <script>
+      var app = new Vue({
+        el: "#first",
+        data: { title: "ssafy" },
+        filters: {
+          toH3: function(value) {
+            console.log("toH3 : ");
+            return value + " hello";
+          },
+          uppper: function(value) {
+            console.log("upper : ");
+            return value.toUpperCase(); // 소문자를 대문자로
+          }
+        },
+        methods: {
+          // 호출 시 매번 수행됨
+          removeVue: function() {
+            app.$destroy();
+          },
+          showMyName: function() {
+            console.log("showMyName : ");
+            return (this.$data.title = "ssafy hello");
+          }
+        },
+        computed: {
+          // cache에 들어가는 정적 데이타 초기화 관리, watiched를 이용하여 변경된 내용을 반영시킬 수 있다. 라이프사이클과 관련.
+          comput: function() {
+            console.log("computed : ");
+            return (this.$data.title = "ssafy hello");
+          }
+        },
+        beforeCreate: function() {
+          // Vue 객체 생성 전 호출되는 hook
+          console.log("--------beforeCreate");
+        },
+        created: function() {
+          // Vuew 객체 생성 후 호출되는 hook
+          console.log("--------created");
+        },
+        beforeMount: function() {
+          // Dom트리 구성 후 화면에 표시(렌더링)  전 호출되는 hook
+          console.log("--------beforeMount");
+        },
+        mounted: function() {
+          // Dom트리 구성 후 화면에 표시(렌더링) 후 호추되는 hook
+          console.log("--------mounted");
+        },
+        beforeUpdate: function() {
+          // Vue 모델(data)가 변경 되기 전 호출
+          console.log("--------beforeUpdate");
+        },
+        updated: function() {
+          // Vue 모델(data)가 변경 되기 후 호출
+          console.log("--------updated");
+        },
+        beforeDestroy: function() {
+          // Vue 객체 삭제 전 호출
+          console.log("--------beforeDestroy");
+        },
+        destroyed: function() {
+          // Vue 객체 삭제 후 호출
+          console.log("--------destroyed");
+        }
+      });
+    </script>
+  </body>
+</html>

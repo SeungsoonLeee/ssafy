@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <title>SSAFY</title>
+    <style>
+      body {
+        background-color: #ffffff;
+      }
+      #second > h2 {
+        margin: auto;
+        padding: 0px;
+        text-align: center;
+        color: blue;
+      }
+      .red {
+        color: red;
+      }
+      #signup-form {
+        width: 70%;
+        height: 200px;
+        margin: auto;
+        padding: 20px;
+        text-align: center;
+        font-family: serif;
+        font-size: 14px;
+      }
+      #signup-form2 {
+        width: 70%;
+        height: 200px;
+        margin: auto;
+        padding: 20px;
+        text-align: center;
+        font-family: serif;
+        font-size: 14px;
+        color: red;
+      }
+    </style>
+    <script src="https://cdn.jsdelivr.net/npm/vue"></script>
+  </head>
+  <body>
+    <section id="signup_section">
+      <div id="signup_form">
+        <h2>National Flags</h2>
+        <div><span>국가 이름 </span><span>{{myflag}}</span></div>
+        <br />
+        <div><span>국가 이름 v-text</span><span v-text="myflag"></span></div>
+        <br />
+        <div><span>국가 이름 v-html</span><span v-html="myflag"></span></div>
+        <br />
+        <!-- v-bind : 태그 속성에 vue 객체의 data를 출력, vue 객체의 데이타를 출력만 한다(단방향) -->
+        <div>
+          <span>국가 이름 v-bind</span>
+          <span><input type="text" v-bind:value="myflag"/></span>
+        </div>
+        <br />
+        <!-- v-model : 태그 속성에 vue 객체의 data를 출력, 입력 받은 데이터를 vue 객체 데이타에 반영(양방향) -->
+        <div>
+          <span>국가 이름 v-model</span>
+          <span><input type="text" v-model="myflag"/></span>
+        </div>
+        <br />
+      </div>
+    </section>
+
+    <script type="text/javascript">
+      var app = new Vue({
+        el: "#signup_section",
+        data: { myflag: "" }
+      });
+    </script>
+  </body>
+</html>

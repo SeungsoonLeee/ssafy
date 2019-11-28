@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+
+    <script>
+        let a = 10;
+        const test = function(){
+            console.log(a);
+            for(let i=0; i<5; ++i){
+                console.log(i);
+            }
+            // console.log('outside for : ' + i); // let으로 선언하여 지역변수 처리 됨
+        };
+
+        test();
+        // let a = 'hello'; // let으로 선언하여 중복 불가능
+        console.log(a);
+        // test = 1000; // const로 선언하여 수정 불가능
+        console.log(test);
+    </script>
+</head>
+<body>
+    
+</body>
+</html>

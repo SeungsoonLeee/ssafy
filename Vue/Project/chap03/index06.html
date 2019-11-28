@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>SSAFY</title>
+  <style>
+body {background-color: #ffffff;}
+#second  > h2 { margin:auto; padding:0px; text-align:center; color: blue;}	
+.red {color: red;}
+#checkboxArea1{width:70%;height:30px; margin:auto; padding:20px; text-align:center; font-family: serif; font-size: 14px;}
+#checkboxArea2{width:70%;height:30px; margin:auto; padding:20px; text-align:center; font-family: serif; font-size: 14px;color: red; }
+</style>
+   <script src="https://unpkg.com/vue"></script>
+</head>
+<body>
+  <div id='second'>
+    <h2>SSAFY SAFE FOOD</h2>
+  </div>
+  <div id='app'>
+    <fieldset id="checkboxArea1">
+        <legend>알레르기 체크</legend>
+        <input type="checkbox" name="box" v-model='alergen' value="대두" /><label>대두</label>
+        <input type="checkbox" name="box" v-model='alergen' value="땅콩" /><label>땅콩</label>
+        <input type="checkbox" name="box" v-model='alergen' value="우유" /><label>우유</label>
+        <input type="checkbox" name="box" v-model='alergen' value="게"  /><label>게</label>
+        <input type="checkbox" name="box" v-model='alergen' value="새우" /><label>새우</label>
+        <input type="checkbox" name="box" v-model='alergen' value="참치" /><label>참치</label>
+        <input type="checkbox" name="box" v-model='alergen' value="연어" /><label>연어</label>
+        <input type="checkbox" name="box" v-model='alergen' value="쑥"  /><label>쑥</label>
+        <input type="checkbox" name="box" v-model='alergen' value="소고기" /><label>소고기</label>
+        <input type="checkbox" name="box" v-model='alergen' value="닭고기" /><label>닭고기</label>
+        <input type="checkbox" name="box" v-model='alergen' value="돼지고기" /><label>돼지고기</label>
+        <input type="checkbox" name="box" v-model='alergen' value="복숭아" /><label>복숭아</label>
+        <input type="checkbox" name="box" v-model='alergen' value="민들레" /><label>민들레</label>
+        <input type="checkbox" name="box" v-model='alergen' value="계란흰자" /><label>계란흰자</label>
+    </fieldset>
+    <fieldset id="checkboxArea2" v-if="moreZero">
+        알러지 : <span v-html='alergen'></span>
+    </fieldset>
+  </div>
+  <script type="text/javascript">
+    var model={
+      alergen : []
+    }
+    var app =new Vue({
+      el:'#app'
+      ,data : model
+      ,computed: {
+        moreZero:function() {
+          return this.alergen.length>0
+        }
+      },
+    })
+ </script>
+</body>
+</html>

@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+
+    <script>
+        var a = 10;
+        var test = function(){
+            console.log(a);
+            for(var i=0; i<5; ++i){
+                console.log(i);
+            }
+            console.log('outside for : ' + i); // 지역변수 영역을 벗어남
+        }
+
+        test();
+        var a = 'hello'; // 중복선언이 가능
+        console.log(a);
+        test = 1000; // 수정 가능
+        console.log(test);
+    </script>
+</head>
+<body>
+    
+</body>
+</html>

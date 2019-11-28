@@ -1,0 +1,36 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <script src="http://unpkg.com/vue"></script>
+    <title>Document</title>
+</head>
+<body>
+    <div id="first">
+        <span>{{title}}</span><br/>
+        <span>{{showMyName('hello SSAFY')}}</span><br/>
+    </div>
+    <script>
+        function a(){
+            console.log('a : ')
+            console.log(this)
+        }
+        a();
+        var model = {title:'ssafy'}
+        var app = new Vue({
+            el:'#first',
+            data:model,
+            methods: {
+                showMyName:function(name) {
+                    console.log('showMyName : ')
+                    console.log(this)
+                    return name + ' ' + new Date();
+                }
+            },
+        })
+    </script>
+</body>
+</html>

@@ -1,0 +1,26 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <script src="http://unpkg.com/vue"></script>
+    <title>Document</title>
+</head>
+<body>
+    <div id="first">
+        <span>태그 바디에 출력시키기</span><br/>
+        1. 보간법 : innerTEXT <span>{{title}}</span><br/>
+        2. 보간법 : innerTEXT <span v-text='title'></span><br/>
+        3. 보간법 : innerHTML <span v-html='title'></span><br/>
+    </div>
+    <script>
+        var model = {title:'<h2>ssafy</h2>'}
+        var app = new Vue({
+            el:'#first',
+            data:model
+        })
+    </script>
+</body>
+</html>

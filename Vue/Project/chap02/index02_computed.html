@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script src="http://unpkg.com/vue"></script>
+</head>
+<body>
+    <div id="first">
+        <div>{{title}}</div>
+        <div v-on:click='showMyName'>클릭</div>
+    </div> 
+
+    <script>
+        var app = new Vue({
+            el:'#first'
+            ,data:{title:'ssafy'}
+            ,methodes:{ // 호출 시 매번 수행됨
+                // showMyName:function(){
+                //     console.log('showMyName : ')
+                //     return this.$data.title = 'ssafy hello'
+                // }
+            }
+            ,computed:{ // cache에 들어가는 정적 데이타 초기화 관리, watiched를 이용하여 변경된 내용을 반영시킬 수 있다. 라이프사이클과 관련.
+                showMyName:function(){
+                    console.log('showMyName : ')
+                    return this.$data.title = 'ssafy hello'
+                }
+            }
+        })    
+    </script>
+</body>
+</html>

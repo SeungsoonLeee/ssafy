@@ -1,0 +1,57 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <script src="http://unpkg.com/vue"></script>
+    <title>Document</title>
+</head>
+<body>
+    <div id="first">
+        <span>{{title}}</span><br/>
+        <span>{{showMyName('hello SSAFY')}}</span><br/>
+        <span v-on:click='changeMyName()'>이름변경</span><br/>
+    </div>
+    <span id='event'>click</span><br/>
+
+    <script>
+        function a(){
+            console.log('a : ')
+            console.log(this)
+        }
+        a();
+
+        // 이벤터 설정을 위한 부분
+        window.onload = function(){
+            var cl = document.getElementById('event')
+            cl.addEventListener('click', enevetFun, true);
+        }
+        // 이벤트에 의해 호출될 함수
+        function enevetFun(){
+            console.log('eventFun : ')
+            console.log(this)
+        }
+
+        var model = {title:'ssafy'}
+        var app = new Vue({
+            el:'#first',
+            data:model,
+            methods: {
+                showMyName:function(name) {
+                    console.log('showMyName : ')
+                    console.log(this)
+                    return name + ' ' + new Date();
+                },
+                changeMyName:function(){
+                    console.log('changeMyName : ')
+                    console.log(this)
+                    this.$data.title = 'ssafy hello'
+                }
+            },
+            
+        })
+    </script>
+</body>
+</html>

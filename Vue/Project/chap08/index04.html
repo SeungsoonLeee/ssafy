@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+<link rel="stylesheet" type="text/css" href="./table.css"/>
+<title>SSAFY</title>
+  <script src="https://unpkg.com/vue"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.18.0/axios.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/vue"></script>
+</head>
+<body>
+<div id='app'>
+<div class='headtitle'><h2>SSAFY HRM ADD EMPLOEE</h2></div>
+<div class='search_box'>
+<a href='./index04.html'>사원추가</a> | 
+<a href='./index03.html'>이름으로 찾기</a> |
+<a href='./index02.html'>아이디로 찾기</a> |
+<a href='./index01.html'>모든사원 보기</a>
+</div>
+<form action="" method="post" id="_frmForm" name="frmForm" >
+<table class="content_table">
+<colgroup>
+		<col style="width:30%;" />
+		<col style="width:70%;" />							
+</colgroup>	
+<tr>
+<th>이름</th>
+<td><input data-msg="이름" type="text" name="name" id="_name" size="30" v-model="cname"/></td>
+</tr>
+<tr>
+<th>이메일</th>
+<td><input data-msg="이메일" type="text" name="mailid"  id="_mailid" size="20" v-model="cmailid" /></td>
+</tr>
+<tr>
+<th>고용일</th>
+<td><input data-msg="고용일" type="date" name="start_date"  id="_start_date" size="30" v-model="cstart_date" /></td>
+</tr>
+<tr>
+<tr>
+<th>월급</th>
+<td><input data-msg="월급" type="number" name="salary"  id="_salary" size="30" min="0" v-model="csalary"/></td>
+</tr>
+<tr>
+<th>커미션</th>
+<td><input data-msg="월급" type="number" name="commission_pct"  id="_commission_pct" size="30" min="0" v-model="ccommission_pct" /></td>
+</tr>
+<tr>
+<td colspan="2" style="height:50px; text-align:center;">
+<button type="submit" name="button">사원추가</button></td>
+</tr>
+</table>
+</form>
+</div>
+<script type="text/javascript">
+new Vue({
+	  el: '#app'
+	  ,filters: {
+		   salarydecimal (value) {
+	      return value.toFixed(2)
+	    }
+	  }
+	})
+ </script>
+</body>
+</html>

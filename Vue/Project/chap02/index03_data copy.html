@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script src="http://unpkg.com/vue"></script>
+</head>
+<body>
+    <div id="first">
+        <div>{{title}}</div>
+    </div> 
+    <div id="second">
+        <div onclick="helloD('하이')">클릭</div>
+    </div>
+    <script>
+        var app = new Vue({
+            el:'#first'
+            ,data:{title:'ssafy'}
+        })
+
+        function helloD(d){
+            //일반 자바 스크립트 함수에서 Vue 객체에 접근
+            // app.$data.title = d;
+            //data 속성은 생략이 가능 하다
+            app.title = d;
+        }
+    </script>
+</body>
+</html>

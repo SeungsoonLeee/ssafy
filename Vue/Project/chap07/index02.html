@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script type="text/javascript" src="http://unpkg.com/vue"></script>
+<script src="https://unpkg.com/vue"></script>
+<script	src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.18.0/axios.js"></script>
+</head>
+</head>
+<body>
+<div id="app">
+	<form  action="" method="post" id="frm" >
+		<table>
+			<tr>이름<td></td><td><input type="text"	name="name" /></td></tr>
+			<tr>이메일<td></td><td><input type="text" name="mailid" /></td></tr>
+			<tr>입사일<td></td><td><input type="date" name="start_date" /></td></tr>
+			<tr>관리자<td></td><td><input type="text" name="manager_id"/></td></tr>
+			<tr>직책<td></td><td><input type="text"	name="title" /></td></tr>
+			<tr>부서<td></td><td><input type="text"	name="dept_id" /></td></tr>
+			<tr>월급<td></td><td><input type="text"	name="salary" /></td></tr>
+			<tr>커미션<td></td><td><input type="text"	name="commission_pct" /></td></tr>
+			<tr><td colspan='2'>
+				<button type="submit" name="button">사원추가</button>
+			</td></tr>
+		</table>
+	</form>
+</div>	
+<script type="text/javascript">
+	var app = new Vue({
+		  el : '#app'
+		, data (){
+			  return {
+				   info :null
+				  ,deps :null
+				  ,cname:''
+				  ,cmailid:''
+				  ,cstart_date :''
+				  ,cmanager_id: 0
+				  ,ctitle : ''
+				  ,cdept_id : 0
+				  ,csalary : 0
+				  ,ccommission_pct:0
+			  }
+		  }
+		, methods :{
+			
+		}
+	})
+</script>
+</body>
+</html>
+
+
+
+
+
+
+
+
